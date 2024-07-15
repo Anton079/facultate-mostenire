@@ -11,7 +11,7 @@ namespace mostenire_faculty
         private int _studentsPast;
         private string _studentsUnPassed;
 
-        public Faculty(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int hourOfService, int lenghtOfService, int salary, int studentsPast, string studentsUnPassed) : base(id, firstName, lastName, email, password, phoneNumber, type, hourOfService, lenghtOfService, salary)
+        public Faculty(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int studentsPast, string studentsUnPassed) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _studentsPast = studentsPast;
             _studentsUnPassed = studentsUnPassed;
@@ -48,15 +48,17 @@ namespace mostenire_faculty
             text += "Email " + base.Email + "\n";
             text += "Password " + base.Password + "\n";
             text += "Phone number" + base.PhoneNumber + "\n";
-            text += "Hours Of Service " + base.HoursOfService + "\n";
-            text += "Lenght Of service" + base.LengthOfService + "\n";
             text += "salary" + base.Salary + "\n";
+            text += "Lenght Of service" + base.LengthOfService + "\n";
+            text += "Hours Of Service " + base.HoursOfService + "\n";
+            text += "Student past " + StudentsPast + "\n";
+            text += "StudentPassed " + StudentsUnPassed + '\n';
             return text;
         }
 
         public string ToSave()
         {
-            return base.Type + ","+ base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.HoursOfService + "," + base.LengthOfService + "," + base.Salary;
+            return base.Type + ","+ base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.HoursOfService + "," + base.LengthOfService + "," + base.Salary + "," + StudentsPast + "," + StudentsUnPassed;
         }
     }
 }

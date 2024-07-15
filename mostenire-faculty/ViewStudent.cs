@@ -8,20 +8,20 @@ namespace mostenire_faculty
 {
     public class ViewStudent
     {
+        private Student student;
         private ServiceAdministrator _administrator;
         private ServiceEmployee _employee;
         private ServicePerson _person;
         private ServiceStaff _staff;
-        private ServiceStudent _student;
         private ServiceFaculty _faculty;
 
-        public ViewStudent()
+        public ViewStudent(Student student)
         {
+            this.student = student;
             _administrator = new ServiceAdministrator();
             _employee = new ServiceEmployee();
             _faculty = new ServiceFaculty();
             _staff = new ServiceStaff();
-            _student = new ServiceStudent();
             _person = new ServicePerson();
         }
 

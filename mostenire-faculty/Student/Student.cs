@@ -12,7 +12,7 @@ namespace mostenire_faculty
         private int _schoolYear;
         private int _studentdAge;
 
-        public Student(string type, int schoolYear, int studentAge, int id, string firstName, string lastName, string email, string password, int phoneNumber) : base(id, firstName, lastName, email, password, phoneNumber, type)
+        public Student(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int schoolYear, int studentAge) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber)
         {
             _schoolYear = schoolYear;
             _studentdAge = studentAge;
@@ -56,7 +56,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Type + "," + _studentdAge + "," + _schoolYear;
+            return base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Type + "," + _schoolYear + "," + _studentdAge;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +9,19 @@ namespace mostenire_faculty
 {
     public class ViewStaff
     {
+        private Staff staff;
         private ServiceAdministrator _administrator;
         private ServiceEmployee _employee;
         private ServicePerson _person;
-        private ServiceStaff _staff;
         private ServiceStudent _student;
         private ServiceFaculty _faculty;
 
-        public ViewStaff()
+        public ViewStaff(Staff staff)
         {
+            this.staff = staff;
             _administrator = new ServiceAdministrator();
             _employee = new ServiceEmployee();
             _faculty = new ServiceFaculty();
-            _staff = new ServiceStaff();
             _student = new ServiceStudent();
             _person = new ServicePerson();
         }

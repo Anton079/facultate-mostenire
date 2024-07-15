@@ -71,13 +71,13 @@ namespace mostenire_faculty
             string parolaLogin = Console.ReadLine();
 
 
-            Person person = _person.CheckPersonCredentials(idLogin, parolaLogin);
+            Student student = _student.CheckStudentCredentials(idLogin, parolaLogin);
 
-            if (person != null)
+            if (student != null)
             {
-                ViewStudent viewUser = new ViewStudent(person);
+                ViewStudent viewStudent = new ViewStudent(student);
                 Console.WriteLine("V ati logat cu succes!");
-                viewUser.play();
+                viewStudent.play();
             }
             else
             {
@@ -97,7 +97,7 @@ namespace mostenire_faculty
 
             if (staff != null)
             {
-                Staff viewStaff = new ViewStaff(staff);
+                ViewStaff viewStaff = new ViewStaff(staff);
                 Console.WriteLine("V ati logat cu succes!");
                 viewStaff.play();
             }
@@ -144,9 +144,11 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salary = Int32.Parse(Console.ReadLine());
 
-                    _faculty.AddServiceFaculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+
+                    _faculty.AddServiceFaculty(newFaculty);
                     _faculty.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru faculty.");
+                    Console.WriteLine("Faculty a fost adaugat!");
                     break;
 
                 case "Employee":
@@ -178,9 +180,11 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salaryEmployee = Int32.Parse(Console.ReadLine());
 
-                    _employee.AddServiceEmployee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
+                    Employee newEmployee = new Employee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
+
+                    _employee.AddServiceEmployee(newEmployee);
                     _employee.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru Employee.");
+                    Console.WriteLine("Employee a fost adaugat.");
                     break;
 
                 case "Administrator":
@@ -213,15 +217,45 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salaryAdministrator = Int32.Parse(Console.ReadLine());
 
-                    _administrator.AddServiceAdministrator(typeUserAdministrator, firstNameAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, hoursOfServiceAdministrator, lenghOfServiceAdministrator, salaryAdministrator);
+                    Administrator newAdministrator = new Administrator(typeUserAdministrator, firstNameAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, hoursOfServiceAdministrator, lenghOfServiceAdministrator, salaryAdministrator);
+
+                    _administrator.AddServiceAdministrator(newAdministrator);
                     _administrator.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru administrator.");
+                    Console.WriteLine("Administrator a fost adaugat!.");
                     break;
 
                 case "Student":
-                    _student.AddStudent();
+
+                    string typeUserStudent = "Student";
+
+                    int idGeneratStudent = _student.GenerateId();
+
+                    Console.WriteLine("Care iti este numele de familie?");
+                    string firstNameStudent = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este prenumele?");
+                    string lastNameStudent = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este emailul ?");
+                    string userMailStudent = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este parola?");
+                    string passwordStudent = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este numarul de telefon?");
+                    int phoneNumberStudent = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cati ani ani?");
+                    int studentdAge = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("In ce an esti la facultate?");
+                    int schoolYear = Int32.Parse(Console.ReadLine());
+
+                    Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, studentdAge, schoolYear);
+
+                    _student.AddStudent(newStudent);
                     _student.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru student.");
+                    Console.WriteLine("Student a fost adaugat!");
                     break;
 
                 case "Staff":
@@ -256,7 +290,7 @@ namespace mostenire_faculty
 
                     _staff.AddServiceStaff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, hoursOfServiceStaff, lenghOfServiceStaff, salaryStaff);
                     _staff.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru staff.");
+                    Console.WriteLine("Staff a fost adaugat!");
                     break;
 
                 default:

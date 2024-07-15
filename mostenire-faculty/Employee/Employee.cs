@@ -12,7 +12,7 @@ namespace mostenire_faculty
         private int _lengthOfService;
         private int _hoursOfService;
 
-        public Employee(int id, string firstName, string lastName, string email, string password, int phoneNumber, string type, int hourOfService, int salary, int lengthOfService) : base(id, firstName, lastName, email, password, phoneNumber, type)
+        public Employee(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber)
         {
             _salary = salary;
             _lengthOfService = lengthOfService;
@@ -56,15 +56,15 @@ namespace mostenire_faculty
             text += "Email " + Email + "\n";
             text += "Password " + Password + "\n";
             text += "Phone number" + PhoneNumber + "\n";
-            text += "Hours Of Service " + _hoursOfService + "\n";
-            text += "Lenght Of service" + _lengthOfService + "\n";
             text += "salary" + _salary + "\n";
+            text += "Lenght Of service" + _lengthOfService + "\n";
+            text += "Hours Of Service " + _hoursOfService + "\n";
             return text;
         }
 
         public string ToSave()
         {
-            return Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + Type + "," + _salary + "," + _hoursOfService + "," + _lengthOfService;
+            return Type + "," + Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + _salary + "," + _lengthOfService + "," + _hoursOfService;
         }
     }
 }

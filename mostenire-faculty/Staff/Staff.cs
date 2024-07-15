@@ -11,7 +11,7 @@ namespace mostenire_faculty
         private int _invetoryMade;
         private int _buildingCleaned;
 
-        public Staff(int id, string firstName, string lastName, string email, string password, int phoneNumber, string type, int hourOfService, int lenghtOfService, int salary, int invetoryMade, int buildingCleaned) : base(id, firstName, lastName, email, password, phoneNumber, type, hourOfService, lenghtOfService, salary)
+        public Staff(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int buildingCleaned,int invetoryMade) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _buildingCleaned = buildingCleaned;
             _invetoryMade = invetoryMade;
@@ -48,15 +48,17 @@ namespace mostenire_faculty
             text += "Email " + base.Email + "\n";
             text += "Password " + base.Password + "\n";
             text += "Phone number" + base.PhoneNumber + "\n";
-            text += "Hours Of Service " + base.HoursOfService + "\n";
-            text += "Lenght Of service" + base.LengthOfService + "\n";
             text += "salary" + base.Salary + "\n";
+            text += "Lenght Of service" + base.LengthOfService + "\n";
+            text += "Hours Of Service " + base.HoursOfService + "\n";
+            text += "BuildingCleanned " + BuildingCleaned + '\n';
+            text += "Invetory Made " + InvetoryMade + '\n';
             return text;
         }
 
         public string ToSave()
         {
-            return base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Type + base.HoursOfService + "," + base.LengthOfService + "," + base.Salary;
+            return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Salary+ "," + base.LengthOfService + "," + base.HoursOfService + "," + BuildingCleaned + "," + InvetoryMade;
         }
     }
 }

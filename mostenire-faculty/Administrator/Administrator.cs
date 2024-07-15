@@ -12,7 +12,7 @@ namespace mostenire_faculty
         private int _organizedEvents;
         private string _problemsSolved;
 
-        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int hourOfService, int lenghtOfService, int salary, int organizedEvents, string problemsSolved) : base(id, firstName, lastName, email, password, phoneNumber, type, hourOfService, lenghtOfService, salary)
+        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int organizedEvents, string problemsSolved) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _organizedEvents = organizedEvents;
             _problemsSolved = problemsSolved;
@@ -49,15 +49,17 @@ namespace mostenire_faculty
             text += "Email " + Email + "\n";
             text += "Password " + Password + "\n";
             text += "Phone number" + PhoneNumber + "\n";
-            text += "Hours Of Service " + HoursOfService + "\n";
-            text += "Lenght Of service" + LengthOfService + "\n";
             text += "salary" + Salary + "\n";
+            text += "Lenght Of service" + LengthOfService + "\n";
+            text += "Hours Of Service " + HoursOfService + "\n";
+            text += "Organized Event " + OrganizedEvents + "\n";
+            text += "Problem Solved " + ProblemsSolved + "\n";
             return text;
         }
 
         public string ToSave()
         {
-            return Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + Type + HoursOfService + "," + LengthOfService + "," + Salary;
+            return Type + "," + Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + Salary + "," + LengthOfService + "," + HoursOfService + "," + OrganizedEvents + ","+ ProblemsSolved;
         }
     }
 }

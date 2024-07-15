@@ -8,16 +8,16 @@ namespace mostenire_faculty
 {
     public class ViewAdministrator
     {
-        private ServiceAdministrator _administrator;
+        private Administrator administrator;
         private ServiceEmployee _employee;
         private ServicePerson _person;
         private ServiceStaff _staff;
         private ServiceStudent _student;
         private ServiceFaculty _faculty;
 
-        public ViewAdministrator()
+        public ViewAdministrator(Administrator administrator)
         {
-            _administrator = new ServiceAdministrator();
+            this.administrator = administrator;
             _employee = new ServiceEmployee();
             _faculty = new ServiceFaculty();
             _staff = new ServiceStaff();

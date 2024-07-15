@@ -30,7 +30,7 @@ namespace mostenire_faculty
 
         }
 
-        public Person(int id, string firstName, string lastName, string email, string password, int phoneNumber, string type)
+        public Person(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber)
         {
             _type = type;
             _id = id;
