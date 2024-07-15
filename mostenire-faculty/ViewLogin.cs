@@ -150,7 +150,7 @@ namespace mostenire_faculty
                     break;
 
                 case "Employee":
-                    string typeUser = "Employee";
+                    string typeUserEmployee = "Employee";
 
                     int idGenerat = _employee.GenerateId();
 
