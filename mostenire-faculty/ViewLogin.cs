@@ -152,38 +152,68 @@ namespace mostenire_faculty
                 case "Employee":
                     string typeUserEmployee = "Employee";
 
-                    int idGenerat = _employee.GenerateId();
+                    int idGeneratEmployee = _employee.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
-                    string firstName = Console.ReadLine();
+                    string firstNameEmployee = Console.ReadLine();
 
                     Console.WriteLine("Care iti este prenumele?");
-                    string lastName = Console.ReadLine();
+                    string lastNameEmployee = Console.ReadLine();
 
                     Console.WriteLine("Care iti este emailul ?");
-                    string userMail = Console.ReadLine();
+                    string userMailEmployee = Console.ReadLine();
 
                     Console.WriteLine("Care iti este parola?");
-                    string password = Console.ReadLine();
+                    string passwordEmployee = Console.ReadLine();
 
                     Console.WriteLine("Care iti este numarul de telefon?");
-                    int phoneNumber = Int32.Parse(Console.ReadLine());
+                    int phoneNumberEmployee = Int32.Parse(Console.ReadLine());
 
                     Console.WriteLine("Cate ore de munca lucrai inainte?");
-                    int hoursOfService = Int32.Parse(Console.ReadLine());
+                    int hoursOfServiceEmployee = Int32.Parse(Console.ReadLine());
 
                     Console.WriteLine("Cata exerienta de munca aveti?");
-                    int lenghOfService = Int32.Parse(Console.ReadLine());
+                    int lenghOfServiceEmployee = Int32.Parse(Console.ReadLine());
 
                     Console.WriteLine("Ce salariu ai avut inainte?");
-                    int salary = Int32.Parse(Console.ReadLine());
-                    _employee.AddServiceEmployee(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+                    int salaryEmployee = Int32.Parse(Console.ReadLine());
+
+                    _employee.AddServiceEmployee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
                     _employee.SaveData();
                     Console.WriteLine("Resetarea parolei pentru Employee.");
                     break;
 
                 case "Administrator":
-                    _administrator.AddServiceAdministrator(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+
+                    string typeUserAdministrator = "Faculty";
+
+                    int idGeneratAdministrator = _faculty.GenerateId();
+
+                    Console.WriteLine("Care iti este numele de familie?");
+                    string firstNameAdministrator = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este prenumele?");
+                    string lastNameAdministrator = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este emailul ?");
+                    string userMailAdministrator = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este parola?");
+                    string passwordAdministrator = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este numarul de telefon?");
+                    int phoneNumberAdministrator = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cate ore de munca lucrai inainte?");
+                    int hoursOfServiceAdministrator = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cata exerienta de munca aveti?");
+                    int lenghOfServiceAdministrator = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ce salariu ai avut inainte?");
+                    int salaryAdministrator = Int32.Parse(Console.ReadLine());
+
+                    _administrator.AddServiceAdministrator(typeUserAdministrator, firstNameAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, hoursOfServiceAdministrator, lenghOfServiceAdministrator, salaryAdministrator);
                     _administrator.SaveData();
                     Console.WriteLine("Resetarea parolei pentru administrator.");
                     break;
@@ -195,7 +225,36 @@ namespace mostenire_faculty
                     break;
 
                 case "Staff":
-                    _staff.AddServiceStaff(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+
+                    string typeUserStaff = "Faculty";
+
+                    int idGeneratStaff = _faculty.GenerateId();
+
+                    Console.WriteLine("Care iti este numele de familie?");
+                    string firstNameStaff = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este prenumele?");
+                    string lastNameStaff = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este emailul ?");
+                    string userMailStaff = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este parola?");
+                    string passwordStaff = Console.ReadLine();
+
+                    Console.WriteLine("Care iti este numarul de telefon?");
+                    int phoneNumberStaff = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cate ore de munca lucrai inainte?");
+                    int hoursOfServiceStaff = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cata exerienta de munca aveti?");
+                    int lenghOfServiceStaff = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Ce salariu ai avut inainte?");
+                    int salaryStaff = Int32.Parse(Console.ReadLine());
+
+                    _staff.AddServiceStaff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, hoursOfServiceStaff, lenghOfServiceStaff, salaryStaff);
                     _staff.SaveData();
                     Console.WriteLine("Resetarea parolei pentru staff.");
                     break;
