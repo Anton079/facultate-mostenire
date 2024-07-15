@@ -8,13 +8,13 @@ namespace mostenire_faculty
 {
     public class Person
     {
+        private string _type;
         private int _id;
         private string _firstName;
         private string _lastName;
         private string _email;
         private string _password;
         private int _phoneNumber;
-        private string _type;
 
         public Person(string proprietati)
         {
@@ -27,18 +27,18 @@ namespace mostenire_faculty
             _email = token[4];
             _password = token[5];
             _phoneNumber = int.Parse(token[6]);
-            
+
         }
 
         public Person(int id, string firstName, string lastName, string email, string password, int phoneNumber, string type)
         {
+            _type = type;
             _id = id;
             _firstName = firstName;
             _lastName = lastName;
             _email = email;
             _password = password;
             _phoneNumber = phoneNumber;
-            _type = type;
         }
 
         public int Id
@@ -86,13 +86,13 @@ namespace mostenire_faculty
         public string PersonInfo()
         {
             string text = " ";
+            text += "Type " + _type + "\n";
             text += "Id " + _id + "\n";
             text += "First name " + _firstName + "\n";
             text += "Last name " + _lastName + "\n";
             text += "Email " + _email + "\n";
             text += "Password " + _password + "\n";
             text += "Phone Numer " + _phoneNumber + "\n";
-            text += "Type " + _type + "\n";
             return text;
         }
 
