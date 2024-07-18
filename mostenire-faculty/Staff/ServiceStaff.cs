@@ -174,5 +174,30 @@ namespace mostenire_faculty
             }
             return false;
         }
+
+        public Staff FindStaffByFirstAndLastName(string firstName, string lastName)
+        {
+            for (int i = 0; i < _serviceStaff.Count; i++)
+            {
+                if (_serviceStaff[i].FirstName == firstName && _serviceStaff[i].LastName == lastName)
+                {
+                    return _serviceStaff[i];
+                }
+            }
+            return null;
+        }
+
+        public void AfisareStudentByNameAndLastName(string firstName, string lastName)
+        {
+            Staff staff = FindStaffByFirstAndLastName(firstName, lastName);
+            if (staff != null)
+            {
+                Console.WriteLine($"Stafful găsit: {staff.FirstName} {staff.LastName}");
+            }
+            else
+            {
+                Console.WriteLine("Stafful nu a putut fi găsit.");
+            }
+        }
     }
 }

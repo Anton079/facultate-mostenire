@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -174,6 +175,31 @@ namespace mostenire_faculty
                 }
             }
             return false;
+        }
+
+        public Student FindStudentByFirstAndLastName(string firstName, string lastName)
+        {
+            for (int i = 0; i < _serviceStudent.Count; i++)
+            {
+                if (_serviceStudent[i].FirstName == firstName && _serviceStudent[i].LastName == lastName)
+                {
+                    return _serviceStudent[i];
+                }
+            }
+            return null;
+        }
+
+        public void AfisareStudentByNameAndLastName(string firstName, string lastName)
+        {
+            Student student = FindStudentByFirstAndLastName(firstName, lastName);
+            if (student != null)
+            {
+                Console.WriteLine($"Student găsit: {student.FirstName} {student.LastName}");
+            }
+            else
+            {
+                Console.WriteLine("Studentul nu a putut fi găsit.");
+            }
         }
     }
 }

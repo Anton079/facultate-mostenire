@@ -9,9 +9,9 @@ namespace mostenire_faculty
     public class Faculty : Employee
     {
         private int _studentsPast;
-        private string _studentsUnPassed;
+        private int _studentsUnPassed;
 
-        public Faculty(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int studentsPast, string studentsUnPassed) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
+        public Faculty(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int studentsPast, int studentsUnPassed) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _studentsPast = studentsPast;
             _studentsUnPassed = studentsUnPassed;
@@ -23,7 +23,7 @@ namespace mostenire_faculty
             string[] token = proprietati.Split(',');
 
             _studentsPast = int.Parse(token[10]);
-            _studentsUnPassed = token[11];
+            _studentsUnPassed = int.Parse(token[11]);
         }
 
         public int StudentsPast
@@ -32,7 +32,7 @@ namespace mostenire_faculty
             set { _studentsPast = value; }
         }
 
-        public string StudentsUnPassed
+        public int StudentsUnPassed
         {
             get { return _studentsUnPassed; }
             set { _studentsUnPassed = value; }

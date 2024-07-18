@@ -10,9 +10,9 @@ namespace mostenire_faculty
     public class Administrator : Employee
     {
         private int _organizedEvents;
-        private string _problemsSolved;
+        private int _problemsSolved;
 
-        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int organizedEvents, string problemsSolved) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
+        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int organizedEvents, int problemsSolved) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _organizedEvents = organizedEvents;
             _problemsSolved = problemsSolved;
@@ -24,7 +24,7 @@ namespace mostenire_faculty
             string[] token = proprietati.Split(',');
 
             _organizedEvents = int.Parse(token[10]);
-            _problemsSolved = token[11];
+            _problemsSolved = int.Parse(token[11]);
         }
 
         public int OrganizedEvents
@@ -33,7 +33,7 @@ namespace mostenire_faculty
             set { _organizedEvents = value; }
         }
 
-        public string ProblemsSolved
+        public int ProblemsSolved
         {
             get { return _problemsSolved; }
             set { _problemsSolved = value; }

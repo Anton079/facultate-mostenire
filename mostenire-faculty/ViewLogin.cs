@@ -144,7 +144,13 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salary = Int32.Parse(Console.ReadLine());
 
-                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary);
+                    Console.WriteLine("Cati studenti ati trecut?");
+                    int studentPast = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cati studenti nu ati trecut?");
+                    int studentUnPast = Int32.Parse(Console.ReadLine());
+
+                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary, studentPast, studentUnPast);
 
                     _faculty.AddServiceFaculty(newFaculty);
                     _faculty.SaveData();
@@ -217,7 +223,13 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salaryAdministrator = Int32.Parse(Console.ReadLine());
 
-                    Administrator newAdministrator = new Administrator(typeUserAdministrator, firstNameAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, hoursOfServiceAdministrator, lenghOfServiceAdministrator, salaryAdministrator);
+                    Console.WriteLine("Cate organizari ai?");
+                    int ctOrganizedEvent = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cate probleme ai rezolvate?");
+                    int ctProblemSolved = Int32.Parse(Console.ReadLine());
+
+                    Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved);
 
                     _administrator.AddServiceAdministrator(newAdministrator);
                     _administrator.SaveData();
@@ -288,7 +300,15 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salaryStaff = Int32.Parse(Console.ReadLine());
 
-                    _staff.AddServiceStaff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, hoursOfServiceStaff, lenghOfServiceStaff, salaryStaff);
+                    Console.WriteLine("De cate ori ati curatat cladirea?");
+                    int buildingCleaned = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("De cate ori ati facut inventarul?");
+                    int invetoryMade = Int32.Parse(Console.ReadLine());
+
+                    Staff newStaff = new Staff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, salaryStaff, lenghOfServiceStaff, hoursOfServiceStaff, buildingCleaned, invetoryMade);
+
+                    _staff.AddServiceStaff(newStaff);
                     _staff.SaveData();
                     Console.WriteLine("Staff a fost adaugat!");
                     break;
