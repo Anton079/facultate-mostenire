@@ -25,7 +25,7 @@ namespace mostenire_faculty
                     string line = " ";
                     while ((line = sr.ReadLine()) != null)
                     {
-                        string type = line.Split(' ')[0];
+                        string type = line.Split(',')[0];
 
                         switch (type)
                         {
@@ -89,24 +89,147 @@ namespace mostenire_faculty
 
         //CRUD
 
-        public void AfisarePersons()
+        public void ShowPerson()
         {
             foreach (Person person in _persList)
             {
-                Console.WriteLine(person.PersonInfo());
+                if (person is Student)
+                {
+                    Student student = person as Student;
+                    Console.WriteLine(student.StudentInfo());
+                }
+                else if (person is Staff)
+                {
+                    Staff staff = person as Staff;
+                    Console.WriteLine(staff.SaffInfo());
+                }
+                else if (person is Faculty)
+                {
+                    Faculty faculty = person as Faculty;
+                    Console.WriteLine(faculty.FacultyInfo());
+                }
+                else if (person is Administrator)
+                {
+                    Administrator admin = person as Administrator;
+                    Console.WriteLine(admin.AdministratorInfo());
+                }
+            }
+        }
+
+        public void ShowStaff()
+        {
+            foreach (Person person in _persList)
+            {
+                if (person is Staff)
+                {
+                    Staff staff = person as Staff;
+                    Console.WriteLine(staff.SaffInfo());
+                }
+            }
+        }
+
+        public void ShowFaculty()
+        {
+            foreach (Person person in _persList)
+            {
+                if (person is Faculty)
+                {
+                    Faculty faculty = person as Faculty;
+                    Console.WriteLine(faculty.FacultyInfo());
+                }
+            }
+        }
+
+        public void ShowAllPerson()
+        {
+            for (int i = 0; i < _persList.Count; i++)
+            {
+                if(_persList[i] != null)
+                {
+                    Console.WriteLine(_persList[i]);
+                }
+            }
+        }
+
+        public void ShowPersonByNameAndLastName(string firstName, string lastName)
+        {
+            Student student = FindPersonByNameAndLastName(firstName, lastName);
+            if (student != null)
+            {
+                Console.WriteLine($"Student găsit: {student.FirstName} {student.LastName}");
+            }
+            else
+            {
+                Console.WriteLine("Studentul nu a putut fi găsit.");
             }
         }
 
         public bool AddPerson(Person newPerson)
         {
-            if (FindPersonById(newPerson.Id) == -1)
+            if (newPerson is Student)
             {
+                Student student = newPerson as Student;
+                _persList.Add(newPerson);
+                return true;
+            }
+            else if (newPerson is Staff)
+            {
+                Staff staff = newPerson as Staff;
+                _persList.Add(newPerson);
+                return true;
+            }
+            else if (newPerson is Faculty)
+            {
+                Faculty faculty = newPerson as Faculty;
+                _persList.Add(newPerson);
+                return true;
+            }
+            else if (newPerson is Administrator)
+            {
+                Administrator admin = newPerson as Administrator;
                 _persList.Add(newPerson);
                 return true;
             }
             return false;
         }
 
+        public int GenerateId()
+        {
+            Random rand = new Random();
+            int id = rand.Next(1, 10000000);
+
+            while (FindPersonById(id) != -1)
+            {
+                id = rand.Next(1, 10000000);
+            }
+
+            return id;
+        }
+
+        public Person CheckPersonCredentials(int id, string password)
+        {
+            for (int i = 0; i < _persList.Count; i++)
+            {
+                if (_persList[i].Id == id && _persList[i].Password == password)
+                {
+                    return _persList[i];
+                }
+            }
+            return null;
+        }
+
+        public bool RemovePerson(int idPerson)
+        {
+            int wantedPerson = FindPersonById(idPerson);
+            if (wantedPerson != -1)
+            {
+                _persList.RemoveAt(wantedPerson);
+                return true;
+            }
+            return false;
+        }
+
+        //FIND
         public int FindPersonById(int id)
         {
             for (int i = 0; i < _persList.Count; i++)
@@ -131,46 +254,42 @@ namespace mostenire_faculty
             return null;
         }
 
-        public int GenerateId()
+        public int FindIdByPhoneNumber(int phoneNumber)
         {
-            Random rand = new Random();
-            int id = rand.Next(1, 10000000);
-
-            while (FindPersonById(id) != -1)
+            for(int i = 0; i < _persList.Count; i++)
             {
-                id = rand.Next(1, 10000000);
+                if (_persList[i].PhoneNumber == phoneNumber)
+                {
+                    return _persList[i].Id;
+                }
             }
-
-            return id;
+            return -1;
         }
 
-        public bool EditPhoneNumberById(int id, int newPhoneNumber)
+        public Person FindPersonByNameAndLastName(string firstName, string lastName)
         {
             for (int i = 0; i < _persList.Count; i++)
             {
-                if (_persList[i].Id == id)
-                {
-                    _persList[i].PhoneNumber = newPhoneNumber;
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Persoana nu a fost gasita");
-                }
-            }
-            return false;
-        }
-
-        public Person CheckPersonCredentials(int id, string password)
-        {
-            for (int i = 0; i < _persList.Count; i++)
-            {
-                if (_persList[i].Id == id && _persList[i].Password == password)
+                if (_persList[i].FirstName == firstName && _persList[i].LastName == lastName)
                 {
                     return _persList[i];
                 }
             }
             return null;
+        }
+
+        //EDIT
+        public bool EditMailById(int id, string newMail)
+        {
+            for(int i = 0; i < _persList.Count; i++)
+            {
+                if (_persList[i].Id == id)
+                {
+                    _persList[i].Email = newMail;
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool EditPasswordById(int id, string newPassword)
@@ -185,5 +304,20 @@ namespace mostenire_faculty
             }
             return false;
         }
+
+        public bool EditPhoneNuber(int id, string phoneNuber)
+        {
+            for(int i = 0; i < _persList.Count; i++)
+            {
+                if(_persList[i].Id == id)
+                {
+                    _persList.[i].PhoneNuber = phoneNuber;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+       
     }
 }

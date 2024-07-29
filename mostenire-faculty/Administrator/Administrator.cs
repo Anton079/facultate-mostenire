@@ -11,11 +11,13 @@ namespace mostenire_faculty
     {
         private int _organizedEvents;
         private int _problemsSolved;
+        private string _messagesReceived;
 
-        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int organizedEvents, int problemsSolved) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
+        public Administrator(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int organizedEvents, int problemsSolved, string messagesReceived) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
         {
             _organizedEvents = organizedEvents;
             _problemsSolved = problemsSolved;
+            _messagesReceived = messagesReceived;
             Type = "Administrator";
         }
 
@@ -25,6 +27,7 @@ namespace mostenire_faculty
 
             _organizedEvents = int.Parse(token[10]);
             _problemsSolved = int.Parse(token[11]);
+            _messagesReceived = token[12];
         }
 
         public int OrganizedEvents
@@ -39,7 +42,13 @@ namespace mostenire_faculty
             set { _problemsSolved = value; }
         }
 
-        public string AdminInfo()
+        public string MessagesReceived
+        {
+            get { return _messagesReceived; }
+            set { _messagesReceived = value; }
+        }
+
+        public string AdministratorInfo()
         {
             string text = " ";
             text += "Type " + Type + "\n";
@@ -54,12 +63,13 @@ namespace mostenire_faculty
             text += "Hours Of Service " + HoursOfService + "\n";
             text += "Organized Event " + OrganizedEvents + "\n";
             text += "Problem Solved " + ProblemsSolved + "\n";
+            text += "MessagesRecived " + MessagesReceived + "\n";
             return text;
         }
 
         public string ToSave()
         {
-            return Type + "," + Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + Salary + "," + LengthOfService + "," + HoursOfService + "," + OrganizedEvents + ","+ ProblemsSolved;
+            return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Salary + "," + base.LengthOfService + "," + base.HoursOfService + "," + OrganizedEvents + ","+ ProblemsSolved + "," + MessagesReceived;
         }
     }
 }

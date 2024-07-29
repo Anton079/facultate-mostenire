@@ -9,21 +9,10 @@ namespace mostenire_faculty
 {
     public class ViewLogin
     {
-        private ServiceAdministrator _administrator;
-        private ServiceEmployee _employee;
         private ServicePerson _person;
-        private ServiceStaff _staff;
-        private ServiceStudent _student;
-        private ServiceFaculty _faculty;
-
 
         public ViewLogin()
         {
-            _administrator = new ServiceAdministrator();
-            _employee = new ServiceEmployee();
-            _faculty = new ServiceFaculty();
-            _staff = new ServiceStaff();
-            _student = new ServiceStudent();
             _person = new ServicePerson();
         }
 
@@ -70,21 +59,7 @@ namespace mostenire_faculty
             Console.WriteLine("Introduce-ti parola ta");
             string parolaLogin = Console.ReadLine();
 
-
-            Student student = _student.CheckStudentCredentials(idLogin, parolaLogin);
-
-            if (student != null)
-            {
-                ViewStudent viewStudent = new ViewStudent(student);
-                Console.WriteLine("V ati logat cu succes!");
-                viewStudent.play();
-            }
-            else
-            {
-                Console.WriteLine("");
-            }
-
-            Administrator admin = _administrator.CheckServiceAdministratorCredentials(idLogin, parolaLogin);
+            Person person = _person.CheckPersonCredentials(idLogin, parolaLogin);
 
             if (admin != null)
             {
@@ -93,18 +68,11 @@ namespace mostenire_faculty
                 viewAdmin.play();
             }
 
-            Staff staff = _staff.CheckServiceStaffCredentials(idLogin, parolaLogin);
-
-            if (staff != null)
-            {
-                ViewStaff viewStaff = new ViewStaff(staff);
-                Console.WriteLine("V ati logat cu succes!");
-                viewStaff.play();
-            }
             else
             {
                 Console.WriteLine("Datele sunt gresite sau nu sunteti inregistrat");
             }
+
         }
 
         public void NewRegistration()
@@ -118,7 +86,7 @@ namespace mostenire_faculty
                 case "Faculty":
                     string typeUser = "Faculty";
 
-                    int idGenerat = _faculty.GenerateId();
+                    int idGenerat = _person.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
                     string firstName = Console.ReadLine();
@@ -135,11 +103,11 @@ namespace mostenire_faculty
                     Console.WriteLine("Care iti este numarul de telefon?");
                     int phoneNumber = Int32.Parse(Console.ReadLine());
 
-                    Console.WriteLine("Cate ore de munca lucrai inainte?");
-                    int hoursOfService = Int32.Parse(Console.ReadLine());
-
                     Console.WriteLine("Cata exerienta de munca aveti?");
                     int lenghOfService = Int32.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Cate ore de munca lucrai inainte?");
+                    int hoursOfService = Int32.Parse(Console.ReadLine());
 
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salary = Int32.Parse(Console.ReadLine());
@@ -150,17 +118,17 @@ namespace mostenire_faculty
                     Console.WriteLine("Cati studenti nu ati trecut?");
                     int studentUnPast = Int32.Parse(Console.ReadLine());
 
-                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, hoursOfService, lenghOfService, salary, studentPast, studentUnPast);
+                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, salary, lenghOfService, hoursOfService, studentPast, studentUnPast);
 
-                    _faculty.AddServiceFaculty(newFaculty);
-                    _faculty.SaveData();
+                    _person.AddPerson(newFaculty);
+                    _person.SaveData();
                     Console.WriteLine("Faculty a fost adaugat!");
                     break;
 
                 case "Employee":
                     string typeUserEmployee = "Employee";
 
-                    int idGeneratEmployee = _employee.GenerateId();
+                    int idGeneratEmployee = _person.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
                     string firstNameEmployee = Console.ReadLine();
@@ -188,8 +156,8 @@ namespace mostenire_faculty
 
                     Employee newEmployee = new Employee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
 
-                    _employee.AddServiceEmployee(newEmployee);
-                    _employee.SaveData();
+                    _person.AddPerson(newEmployee);
+                    _person.SaveData();
                     Console.WriteLine("Employee a fost adaugat.");
                     break;
 
@@ -197,7 +165,7 @@ namespace mostenire_faculty
 
                     string typeUserAdministrator = "Faculty";
 
-                    int idGeneratAdministrator = _faculty.GenerateId();
+                    int idGeneratAdministrator = _person.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
                     string firstNameAdministrator = Console.ReadLine();
@@ -231,8 +199,8 @@ namespace mostenire_faculty
 
                     Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved);
 
-                    _administrator.AddServiceAdministrator(newAdministrator);
-                    _administrator.SaveData();
+                    _person.AddPerson(newAdministrator);
+                    _person.SaveData();
                     Console.WriteLine("Administrator a fost adaugat!.");
                     break;
 
@@ -265,8 +233,8 @@ namespace mostenire_faculty
 
                     Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, studentdAge, schoolYear);
 
-                    _student.AddStudent(newStudent);
-                    _student.SaveData();
+                    _person.AddPerson(newStudent);
+                    _person.SaveData();
                     Console.WriteLine("Student a fost adaugat!");
                     break;
 
@@ -274,7 +242,7 @@ namespace mostenire_faculty
 
                     string typeUserStaff = "Faculty";
 
-                    int idGeneratStaff = _faculty.GenerateId();
+                    int idGeneratStaff = _person.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
                     string firstNameStaff = Console.ReadLine();
@@ -308,8 +276,8 @@ namespace mostenire_faculty
 
                     Staff newStaff = new Staff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, salaryStaff, lenghOfServiceStaff, hoursOfServiceStaff, buildingCleaned, invetoryMade);
 
-                    _staff.AddServiceStaff(newStaff);
-                    _staff.SaveData();
+                    _person.AddPerson(newStaff);
+                    _person.SaveData();
                     Console.WriteLine("Staff a fost adaugat!");
                     break;
 
@@ -334,32 +302,26 @@ namespace mostenire_faculty
             switch (userWanted)
             {
                 case "Faculty":
-                    _faculty.EditPasswordById(idWanted, newPassword);
-                    _faculty.SaveData();
+                    _person.EditPasswordById(idWanted, newPassword);
+                    _person.SaveData();
                     Console.WriteLine("Resetarea parolei pentru faculty.");
                     break;
 
-                case "Employee":
-                    _employee.EditPasswordById(idWanted, newPassword);
-                    _employee.SaveData();
-                    Console.WriteLine("Resetarea parolei pentru Employee.");
-                    break;
-
                 case "Administrator":
-                    _administrator.EditPasswordById(idWanted, newPassword);
-                    _administrator.SaveData();
+                    _person.EditPasswordById(idWanted, newPassword);
+                    _person.SaveData();
                     Console.WriteLine("Resetarea parolei pentru administrator.");
                     break;
 
                 case "Student":
-                    _student.EditPasswordById(idWanted, newPassword);
-                    _student.SaveData();
+                    _person.EditPasswordById(idWanted, newPassword);
+                    _person.SaveData();
                     Console.WriteLine("Resetarea parolei pentru student.");
                     break;
 
                 case "Staff":
-                    _staff.EditPasswordById(idWanted, newPassword);
-                    _staff.SaveData();
+                    _person.EditPasswordById(idWanted, newPassword);
+                    _person.SaveData();
                     Console.WriteLine("Resetarea parolei pentru staff.");
                     break;
 

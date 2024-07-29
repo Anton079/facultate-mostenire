@@ -9,28 +9,20 @@ namespace mostenire_faculty
     public class ViewStudent
     {
         private Student student;
-        private ServiceAdministrator _administrator;
-        private ServiceEmployee _employee;
-        private ServicePerson _person;
-        private ServiceStaff _staff;
-        private ServiceFaculty _faculty;
+        private ServicePerson _personService;
 
         public ViewStudent(Student student)
         {
             this.student = student;
-            _administrator = new ServiceAdministrator();
-            _employee = new ServiceEmployee();
-            _faculty = new ServiceFaculty();
-            _staff = new ServiceStaff();
-            _person = new ServicePerson();
+            _personService = new ServicePerson();
         }
 
         public void Meniu()
         {
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine("Apasa taasta 1 pentru ati modifica mail ul!");
+            Console.WriteLine("Apasa tasta 2 pentru ati modifica parola!");
+            Console.WriteLine("Apasati tasta 3 pentru a vedea ce an esti la facultate");
+            Console.WriteLine("Apasati tasta 4 pentru a vedea ce ");
             Console.WriteLine("");
             Console.WriteLine("");
         }
@@ -46,67 +38,35 @@ namespace mostenire_faculty
 
                 switch (alegere)
                 {
-
+                    case "1":
+                        ModificaEmail();
+                        break;
+                    case "2":
+                        ModificaParola();
+                        break;
                 }
             }
         }
 
-        //public void AddEnrolmentInSchool()
-        //{
-        //    Console.WriteLine("Id ul a fost luat automat");
-        //    int idStudent = student.Id;
+        private void ModificaEmail()
+        {
+            Console.WriteLine("Introdu noul email:");
+            string newEmail = Console.ReadLine();
+            
+            
+            Console.WriteLine("Email modificat cu succes!");
+        }
 
-        //    Console.WriteLine("Ce id are cursul la care vrei sa te inscrii?");
-        //    int idCourse = Int32.Parse(Console.ReadLine());
+        private void ModificaParola()
+        {
+            Console.WriteLine("Introdu noua parola:");
+            string newPassword = Console.ReadLine();
+            
+            Console.WriteLine("Parola modificata cu succes!");
+        }
 
-        //    Console.WriteLine("In ce data te inregistrezi?");
-        //    int idCreateAt = Int32.Parse(Console.ReadLine());
 
-        //    Enrolment Enrolment = new Enrolment(idStudent, idCourse, idCreateAt);
 
-        //    _enrolmentService.AddEnrolment(Enrolment);
 
-        //    _enrolmentService.SaveData();
-
-        //    Console.WriteLine("Inregistrarea a fost reusita!");
-        //}
-
-        //public void AddBook()
-        //{
-        //    int idGenerat = _bookService.GenerateId();
-
-        //    Console.WriteLine("Id ul tau a fost preluat automat");
-        //    int idStudent = student.Id;
-
-        //    Console.WriteLine("Ce nume are cartea?");
-        //    string bookNewName = Console.ReadLine();
-
-        //    Console.WriteLine("Cand a fost inchiriata cartea");
-        //    int bookNewTime = Int32.Parse(Console.ReadLine());
-
-        //    Book book = new Book(idGenerat, idStudent, bookNewName, bookNewTime);
-
-        //    _bookService.AddBook(book);
-
-        //    _bookService.SaveData();
-
-        //    Console.WriteLine("Cartea a fost adauga !");
-        //}
-
-        //public void LeftACourse()
-        //{
-        //    Console.WriteLine("Ce id are cursul de la care vrei sa iesi?");
-        //    int idCourse = Int32.Parse(Console.ReadLine());
-
-        //    if (_courseService.FindCourseById(idCourse) != -1)
-        //    {
-        //        _enrolmentService.RemoveEnrolment(idCourse);
-        //        Console.WriteLine("Ati fost scos de la curs");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Nu a fost gasit curusl dorit");
-        //    }
-        //}
     }
 }

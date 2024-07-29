@@ -58,7 +58,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return base.Type + ","+ base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.HoursOfService + "," + base.LengthOfService + "," + base.Salary + "," + StudentsPast + "," + StudentsUnPassed;
+            return base.Type + ","+ base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Salary + "," + base.LengthOfService + "," + base.HoursOfService + "," + StudentsPast + "," + StudentsUnPassed;
         }
     }
 }

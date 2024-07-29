@@ -41,6 +41,12 @@ namespace mostenire_faculty
             _phoneNumber = phoneNumber;
         }
 
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
         public int Id
         {
             get { return _id; }
@@ -77,12 +83,6 @@ namespace mostenire_faculty
             set { _phoneNumber = value; }
         }
 
-        public string Type
-        {
-            get { return _type; }
-            set { _type = value; }
-        }
-
         public string PersonInfo()
         {
             string text = " ";
@@ -98,7 +98,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return _id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber + "," + _type;
+            return _type + "," +_id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber;
         }
     }
 }

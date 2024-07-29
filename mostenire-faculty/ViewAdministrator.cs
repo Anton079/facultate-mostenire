@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,20 +10,12 @@ namespace mostenire_faculty
     public class ViewAdministrator
     {
         private Administrator administrator;
-        private ServiceEmployee _employee;
-        private ServicePerson _person;
-        private ServiceStaff _staff;
-        private ServiceStudent _student;
-        private ServiceFaculty _faculty;
+        private ServicePerson _servicePerson;
 
         public ViewAdministrator(Administrator administrator)
         {
             this.administrator = administrator;
-            _employee = new ServiceEmployee();
-            _faculty = new ServiceFaculty();
-            _staff = new ServiceStaff();
-            _student = new ServiceStudent();
-            _person = new ServicePerson();
+            _servicePerson = new ServicePerson();
         }
 
         public void Meniu()
@@ -52,27 +45,27 @@ namespace mostenire_faculty
                 switch(alegere)
                 {
                     case "1":
-                        ShowStundeti();
+                        _servicePerson.ShowAllPerson();
                         break;
 
                     case "2":
-                        FindStudentByFirstAndLastName();
+                        FindPersonByNameAndLastName();
                         break;
 
                     case "3":
-                        ShowStaff();
+                        _servicePerson.ShowStaff();
                         break;
 
                     case "4":
-                        FindStaffByFirstAndLastName();
+                        FindPersonByNameAndLastName();
                         break;
 
                     case "5":
-                        ShowFaculty();
+                        _servicePerson.ShowFaculty();
                         break;
 
                     case "6":
-                        FindFacultyByFirstAndLastName();
+                        FindPersonByNameAndLastName();
                         break;
 
                     case "7":
@@ -82,12 +75,7 @@ namespace mostenire_faculty
             }
         }
 
-        public void ShowStundeti()
-        {
-            _student.AfisareStudents();
-        }
-
-        public void FindStudentByFirstAndLastName()
+        public void FindPersonByNameAndLastName()
         {
             Console.WriteLine("Care este numele de familie?");
             string firstName = Console.ReadLine();
@@ -95,45 +83,7 @@ namespace mostenire_faculty
             Console.WriteLine("Care este prenumele?");
             string lastName = Console.ReadLine();
 
-            _student.FindStudentByFirstAndLastName(firstName, lastName);
-
-            _student.AfisareStudentByNameAndLastName(firstName, lastName);
-        }
-
-        public void ShowStaff()
-        {
-            _staff.AfisareStaff();
-        }
-
-        public void FindStaffByFirstAndLastName()
-        {
-            Console.WriteLine("Care este numele de familie?");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Care este prenumele?");
-            string lastName = Console.ReadLine();
-
-            _staff.FindStaffByFirstAndLastName(firstName, lastName);
-
-            _staff.AfisareStaffByNameAndLastName(firstName, lastName);
-        }
-
-        public void ShowFaculty()
-        {
-            _faculty.AfisareFaculty();
-        }
-
-        public void FindFacultyByFirstAndLastName()
-        {
-            Console.WriteLine("Care este numele de familie?");
-            string firstName = Console.ReadLine();
-
-            Console.WriteLine("Care este prenumele?");
-            string lastName = Console.ReadLine();
-
-            _faculty.FindFacultyByFirstAndLastName(firstName, lastName);
-
-            _faculty.AfisareFacultyByNameAndLastName(firstName, lastName);
+            _servicePerson.ShowPersonByNameAndLastName(firstName, lastName);
         }
 
         public void RemoveStudent()
@@ -141,10 +91,10 @@ namespace mostenire_faculty
             Console.WriteLine("Ce id are studentul?");
             int wantedId = Int32.Parse(Console.ReadLine());
 
-            int studentId = _student.FindStudentById(wantedId);
+            int studentId = _servicePerson.FindPersonById(wantedId);
             if (studentId != -1)
             {
-                _student.RemoveStudentById(studentId);
+                _servicePerson.RemovePerson(studentId);
                 Console.WriteLine("Studentul a fost șters");
             }
             else
@@ -152,5 +102,25 @@ namespace mostenire_faculty
                 Console.WriteLine("Studentul nu a putut fi găsit");
             }
         }
+
+        public void RemoveStaff()
+        {
+            Console.WriteLine("Ce id are staff ul?");
+            int wantedId=  Int32.Parse(Console.ReadLine()) ;
+
+            int staffId = _servicePerson.FindPersonById(wantedId);
+
+            if(staffId != -1)
+            {
+                _servicePerson.RemovePerson(staffId);
+                Console.WriteLine("Staff ul a fost sters!");
+            }
+            else
+            {
+                Console.WriteLine("staff ul nu a fost sters!");
+            }
+        }
+
+        
     }
 }

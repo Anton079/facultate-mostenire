@@ -11,7 +11,7 @@ namespace mostenire_faculty
         private int _invetoryMade;
         private int _buildingCleaned;
 
-        public Staff(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int buildingCleaned,int invetoryMade) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber,  salary,  lengthOfService,  hourOfService)
+        public Staff(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService, int buildingCleaned, int invetoryMade) : base(type, id, firstName, lastName, email, password, phoneNumber, salary, lengthOfService, hourOfService)
         {
             _buildingCleaned = buildingCleaned;
             _invetoryMade = invetoryMade;
@@ -58,7 +58,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Salary+ "," + base.LengthOfService + "," + base.HoursOfService + "," + BuildingCleaned + "," + InvetoryMade;
+            return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + base.Salary + "," + base.LengthOfService + "," + base.HoursOfService + "," + BuildingCleaned + "," + InvetoryMade;
         }
     }
 }
