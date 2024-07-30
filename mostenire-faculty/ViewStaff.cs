@@ -39,26 +39,79 @@ namespace mostenire_faculty
                 switch (alegere)
                 {
                     case "1":
+                        _person.ShowSalary();
                         break;
+
                     case "2":
+                        EditPassword();
                         break;
 
                     case "3":
+                        EditNumberPhone();
                         break;
 
                     case "4":
+                        _person.ShowSalary();
                         break;
 
                     case "5":
+                        _person.ShowCuratenie();
                         break;
 
                     case "6":
+                        SendMessageToAdmin();
                         break;
                 }
             }
         }
 
-        
+        public void EditPassword()
+        {
+            int idWanted = staff.Id;
+
+            Console.WriteLine("Care sa fie noua problema!");
+            string newPassword = Console.ReadLine();
+
+            _person.EditPasswordById(idWanted, newPassword);
+            _person.SaveData();
+        }
+
+        public void EditNumberPhone()
+        {
+            int idWanted = staff.Id;
+
+            Console.WriteLine("Care sa fie noul numar de telefon!");
+            string newPhone = Console.ReadLine();
+
+            _person.EditPasswordById(idWanted, newPhone);
+            _person.SaveData();
+        }
+
+        public void SendMessageToAdmin()
+        {
+            Console.WriteLine("Care să fie mesajul?");
+            string messageWant = Console.ReadLine();
+
+            Console.WriteLine("Introduceți ID-ul administratorului:");
+            int idWanted = Int32.Parse(Console.ReadLine());
+
+            if (messageWant != null && idWanted != -1)
+            {
+                if (_person.NewMessageSend(idWanted, messageWant))
+                {
+                    Console.WriteLine("Mesajul a fost trimis cu succes!");
+                }
+                else
+                {
+                    Console.WriteLine("Mesajul nu s-a putut trimite! Administratorul nu a fost găsit sau altă eroare.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Mesajul sau ID-ul administratorului nu sunt valide!");
+            }
+        }
+
 
     }
 }

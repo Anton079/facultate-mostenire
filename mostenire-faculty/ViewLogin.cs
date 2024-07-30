@@ -9,6 +9,7 @@ namespace mostenire_faculty
 {
     public class ViewLogin
     {
+
         private ServicePerson _person;
 
         public ViewLogin()
@@ -61,18 +62,42 @@ namespace mostenire_faculty
 
             Person person = _person.CheckPersonCredentials(idLogin, parolaLogin);
 
-            if (admin != null)
+            if (person != null)
             {
-                ViewAdministrator viewAdmin = new ViewAdministrator(admin);
-                Console.WriteLine("V ati logat cu succes!");
-                viewAdmin.play();
+                if (person is Administrator admin)
+                {
+                    ViewAdministrator viewAdmin = new ViewAdministrator(admin);
+                    Console.WriteLine("V-ati logat cu succes!");
+                    viewAdmin.play();
+                }
+                else if (person is Staff staff)
+                {
+                    ViewStaff viewstaff = new ViewStaff(staff);
+                    Console.WriteLine("V-ati logat cu succes!");
+                    viewstaff.play();
+                }
+                else if (person is Faculty faculty)
+                {
+                    ViewFaculty viewFaculty = new ViewFaculty(faculty);
+                    Console.WriteLine("V-ati logat cu succes!");
+                    viewFaculty.play();
+                }
+                //else if (person is Student student)
+                //{  
+                //    ViewStudent viewStudent = new ViewStudent(student);                                                       //EROARE 1
+                //    Console.WriteLine("V-ati logat cu succes!");
+                //    viewStudent.play();
+                //}
+                else
+                {
+                    Console.WriteLine("Id-ul sau parola sunt gresite!");
+                }
+                
             }
-
             else
             {
                 Console.WriteLine("Datele sunt gresite sau nu sunteti inregistrat");
             }
-
         }
 
         public void NewRegistration()
@@ -197,7 +222,9 @@ namespace mostenire_faculty
                     Console.WriteLine("Cate probleme ai rezolvate?");
                     int ctProblemSolved = Int32.Parse(Console.ReadLine());
 
-                    Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved);
+                    string messagesReceived = " ";
+
+                    Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved, messagesReceived);
 
                     _person.AddPerson(newAdministrator);
                     _person.SaveData();
@@ -208,7 +235,7 @@ namespace mostenire_faculty
 
                     string typeUserStudent = "Student";
 
-                    int idGeneratStudent = _student.GenerateId();
+                    int idGeneratStudent = _person.GenerateId();
 
                     Console.WriteLine("Care iti este numele de familie?");
                     string firstNameStudent = Console.ReadLine();
@@ -231,7 +258,9 @@ namespace mostenire_faculty
                     Console.WriteLine("In ce an esti la facultate?");
                     int schoolYear = Int32.Parse(Console.ReadLine());
 
-                    Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, studentdAge, schoolYear);
+                    int remainingExams = 0;
+
+                    Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, studentdAge, schoolYear, remainingExams);
 
                     _person.AddPerson(newStudent);
                     _person.SaveData();

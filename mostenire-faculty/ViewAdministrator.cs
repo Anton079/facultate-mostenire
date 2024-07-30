@@ -53,7 +53,7 @@ namespace mostenire_faculty
                         break;
 
                     case "3":
-                        _servicePerson.ShowStaff();
+                        _servicePerson.ShowPerson();
                         break;
 
                     case "4":
@@ -61,7 +61,7 @@ namespace mostenire_faculty
                         break;
 
                     case "5":
-                        _servicePerson.ShowFaculty();
+                        _servicePerson.ShowPerson();
                         break;
 
                     case "6":
@@ -70,6 +70,10 @@ namespace mostenire_faculty
 
                     case "7":
                         RemoveStudent();
+                        break;
+
+                    case "8":
+                        RemoveStaff();
                         break;
                 }
             }
@@ -88,14 +92,22 @@ namespace mostenire_faculty
 
         public void RemoveStudent()
         {
-            Console.WriteLine("Ce id are studentul?");
+            Console.WriteLine("Ce ID are studentul?");
             int wantedId = Int32.Parse(Console.ReadLine());
 
-            int studentId = _servicePerson.FindPersonById(wantedId);
-            if (studentId != -1)
+            var person = _servicePerson.FindPersonById(wantedId);
+
+            if (person != null)
             {
-                _servicePerson.RemovePerson(studentId);
-                Console.WriteLine("Studentul a fost șters");
+                if (person is Student)
+                {
+                    _servicePerson.RemovePerson(wantedId);
+                    Console.WriteLine("Studentul a fost șters");
+                }
+                else
+                {
+                    Console.WriteLine("ID-ul nu se referă la un Student!");
+                }
             }
             else
             {
@@ -105,22 +117,54 @@ namespace mostenire_faculty
 
         public void RemoveStaff()
         {
-            Console.WriteLine("Ce id are staff ul?");
-            int wantedId=  Int32.Parse(Console.ReadLine()) ;
+            Console.WriteLine("Ce ID are staff-ul?");
+            int wantedId = Int32.Parse(Console.ReadLine());
 
-            int staffId = _servicePerson.FindPersonById(wantedId);
+            var person = _servicePerson.FindPersonById(wantedId);
 
-            if(staffId != -1)
+            if (person != null)
             {
-                _servicePerson.RemovePerson(staffId);
-                Console.WriteLine("Staff ul a fost sters!");
+                if (person is Staff)
+                {
+                    _servicePerson.RemovePerson(wantedId);
+                    Console.WriteLine("Staff-ul a fost șters!");
+                }
+                else
+                {
+                    Console.WriteLine("ID-ul nu se referă la un Staff!");
+                }
             }
             else
             {
-                Console.WriteLine("staff ul nu a fost sters!");
+                Console.WriteLine("Staff-ul nu a fost găsit");
             }
         }
 
-        
+        public void RemoveFaculty()
+        {
+            Console.WriteLine("Ce ID are faculty-ul?");
+            int wantedId = Int32.Parse(Console.ReadLine());
+
+            var person = _servicePerson.FindPersonById(wantedId);
+
+            if (person != null)
+            {
+                if (person is Faculty)
+                {
+                    _servicePerson.RemovePerson(wantedId); 
+                    Console.WriteLine("Faculty-ul a fost sters!");
+                }
+                else
+                {
+                    Console.WriteLine("ID-ul nu se referă la un Faculty!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Persoana nu a fost găsită!");
+            }
+        }
+
+
     }
 }

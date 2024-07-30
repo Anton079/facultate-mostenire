@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mostenire_faculty
 {
@@ -11,22 +7,19 @@ namespace mostenire_faculty
         private Student student;
         private ServicePerson _personService;
 
-        public ViewStudent(Student student)
+        public ViewStudent(Student student, ServicePerson personService)
         {
             this.student = student;
-            _personService = new ServicePerson();
+            _personService = personService;
         }
 
         public void Meniu()
         {
-            Console.WriteLine("Apasa taasta 1 pentru ati modifica mail ul!");
-            Console.WriteLine("Apasa tasta 2 pentru ati modifica parola!");
-            Console.WriteLine("Apasati tasta 3 pentru a vedea ce an esti la facultate");
-            Console.WriteLine("Apasati tasta 4 pentru a vedea ce ");
-            Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine("Apasă tasta 1 pentru a modifica email-ul!");
+            Console.WriteLine("Apasă tasta 2 pentru a modifica parola!");
+            Console.WriteLine("Apasă tasta 3 pentru a vedea ce an ești la facultate");
+            Console.WriteLine("Apasă tasta 4 pentru a vedea câte examene mai ai de dat!");
         }
-
 
         public void play()
         {
@@ -41,32 +34,62 @@ namespace mostenire_faculty
                     case "1":
                         ModificaEmail();
                         break;
+
                     case "2":
                         ModificaParola();
+                        break;
+
+                    case "3":
+                        ShowSchoolYear();
+                        break;
+
+                    case "4":
+                        ShowRemainingExams();
                         break;
                 }
             }
         }
 
-        private void ModificaEmail()
+        public void ModificaEmail()
         {
             Console.WriteLine("Introdu noul email:");
             string newEmail = Console.ReadLine();
-            
-            
-            Console.WriteLine("Email modificat cu succes!");
+
+            if (_personService.EditMailById(student.Id, newEmail))
+            {
+                student.Email = newEmail;
+                Console.WriteLine("Email modificat cu succes!");
+            }
+            else
+            {
+                Console.WriteLine("Email-ul nu a putut fi modificat.");
+            }
         }
 
-        private void ModificaParola()
+        public void ModificaParola()
         {
-            Console.WriteLine("Introdu noua parola:");
+            Console.WriteLine("Introdu noua parolă:");
             string newPassword = Console.ReadLine();
-            
-            Console.WriteLine("Parola modificata cu succes!");
+
+            if (_personService.EditPasswordById(student.Id, newPassword))
+            {
+                student.Password = newPassword;
+                Console.WriteLine("Parola modificată cu succes!");
+            }
+            else
+            {
+                Console.WriteLine("Parola nu a putut fi modificată.");
+            }
         }
 
+        public void ShowSchoolYear()
+        {
+            Console.WriteLine($"Anul școlar: {student.SchoolYear}");
+        }
 
-
-
+        public void ShowRemainingExams()
+        {
+            Console.WriteLine($"Examene rămase: {student.RemainingExams}");
+        }
     }
 }

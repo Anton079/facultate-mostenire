@@ -89,6 +89,7 @@ namespace mostenire_faculty
 
         //CRUD
 
+        //SHOW
         public void ShowPerson()
         {
             foreach (Person person in _persList)
@@ -116,30 +117,6 @@ namespace mostenire_faculty
             }
         }
 
-        public void ShowStaff()
-        {
-            foreach (Person person in _persList)
-            {
-                if (person is Staff)
-                {
-                    Staff staff = person as Staff;
-                    Console.WriteLine(staff.SaffInfo());
-                }
-            }
-        }
-
-        public void ShowFaculty()
-        {
-            foreach (Person person in _persList)
-            {
-                if (person is Faculty)
-                {
-                    Faculty faculty = person as Faculty;
-                    Console.WriteLine(faculty.FacultyInfo());
-                }
-            }
-        }
-
         public void ShowAllPerson()
         {
             for (int i = 0; i < _persList.Count; i++)
@@ -153,10 +130,10 @@ namespace mostenire_faculty
 
         public void ShowPersonByNameAndLastName(string firstName, string lastName)
         {
-            Student student = FindPersonByNameAndLastName(firstName, lastName);
-            if (student != null)
+            Person person = FindPersonByNameAndLastName(firstName, lastName);
+            if (person != null)
             {
-                Console.WriteLine($"Student găsit: {student.FirstName} {student.LastName}");
+                Console.WriteLine($"Student găsit:  Tip de angajat:{person.Type} Id:{person.Id} Email:{person.Email} Nume si prenume:{person.FirstName} {person.LastName}");
             }
             else
             {
@@ -164,6 +141,41 @@ namespace mostenire_faculty
             }
         }
 
+        public void ShowSalary()
+        {
+            foreach (Person person in _persList)
+            {
+                if (person is Staff)
+                {
+                    Staff staff = person as Staff;
+                    Console.WriteLine(staff.Salary);
+                }
+                else if (person is Faculty)
+                {
+                    Faculty faculty = person as Faculty;
+                    Console.WriteLine(faculty.Salary);
+                }
+                else if (person is Administrator)
+                {
+                    Administrator admin = person as Administrator;
+                    Console.WriteLine(admin.Salary);
+                }
+            }
+        }
+
+        public void ShowCuratenie()
+        {
+            foreach (Person person in _persList)
+            {
+                if(person is Staff)
+                {
+                    Staff staff = person as Staff;
+                    Console.WriteLine(staff.BuildingCleaned);
+                }
+            }
+        }
+
+        //REST
         public bool AddPerson(Person newPerson)
         {
             if (newPerson is Student)
@@ -228,6 +240,26 @@ namespace mostenire_faculty
             }
             return false;
         }
+
+        public bool NewMessageSend(int adminId, string newMessage)
+        {
+            if (newMessage != null)
+            {
+                int adminIndex = FindPersonById(adminId);
+                if (adminIndex != -1)
+                {
+                    Administrator admin = _persList[adminIndex] as Administrator;
+                    if (admin != null)
+                    {
+                        admin.MessagesReceived += " " + newMessage;
+                        SaveData();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
 
         //FIND
         public int FindPersonById(int id)
@@ -305,13 +337,13 @@ namespace mostenire_faculty
             return false;
         }
 
-        public bool EditPhoneNuber(int id, string phoneNuber)
+        public bool EditPhoneNumber(int id, int phoneNuber)
         {
             for(int i = 0; i < _persList.Count; i++)
             {
                 if(_persList[i].Id == id)
                 {
-                    _persList.[i].PhoneNuber = phoneNuber;
+                    _persList[i].PhoneNumber = phoneNuber;
                     return true;
                 }
             }
