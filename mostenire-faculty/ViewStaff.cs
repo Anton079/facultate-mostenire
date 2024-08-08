@@ -73,7 +73,6 @@ namespace mostenire_faculty
             string newPassword = Console.ReadLine();
 
             _person.EditPasswordById(idWanted, newPassword);
-            _person.SaveData();
         }
 
         public void EditNumberPhone()
@@ -84,7 +83,6 @@ namespace mostenire_faculty
             string newPhone = Console.ReadLine();
 
             _person.EditPasswordById(idWanted, newPhone);
-            _person.SaveData();
         }
 
         public void SendMessageToAdmin()

@@ -15,7 +15,7 @@ namespace mostenire_faculty
         {
             _studentsPast = studentsPast;
             _studentsUnPassed = studentsUnPassed;
-            base.Type = "faculty";
+            base.Type = "Faculty";
         }
 
         public Faculty(string proprietati) : base(proprietati)

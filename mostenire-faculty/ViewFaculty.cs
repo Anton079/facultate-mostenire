@@ -102,7 +102,6 @@ namespace mostenire_faculty
             int newPhone = Int32.Parse(Console.ReadLine());
 
             _person.EditPhoneNumber(idWanted, newPhone);
-            _person.SaveData();
             Console.WriteLine("Numarul de telefon a fost actualizat!");
         }
 
@@ -114,7 +113,6 @@ namespace mostenire_faculty
             if (!string.IsNullOrEmpty(messageWant))
             {
                 _person.NewMessageSend(faculty.Id, messageWant);
-                _person.SaveData();
                 Console.WriteLine("Mesajul a fost trimis administratorului!");
             }
             else

@@ -30,13 +30,15 @@ namespace mostenire_faculty
                         switch (type)
                         {
 
-                            case "Student": _persList.Add(new Student(line)); break;
-
                             case "Faculty": _persList.Add(new Faculty(line)); break;
+
+                            case "Student": _persList.Add(new Student(line)); break;
 
                             case "Staff": _persList.Add(new Staff(line)); break;
 
                             case "Administrator": _persList.Add(new Administrator(line)); break;
+
+                            default: break;
                         }
                     }
                 }
@@ -64,13 +66,32 @@ namespace mostenire_faculty
 
             for (int i = 0; i < _persList.Count; i++)
             {
-                save += _persList[i].ToSave() + "\n";
-            }
+                if (_persList[i] is Student)
+                {
+                    save += (_persList[i] as Student).ToSave();
+                }
+                else if (_persList[i] is Staff)
+                {
+                    save += (_persList[i] as Staff).ToSave();
+                }
+                else if (_persList[i] is Faculty)
+                {
+                    save += (_persList[i] as Faculty).ToSave();
+                }
+                else if (_persList[i] is Administrator)
+                {
+                    save += (_persList[i] as Administrator).ToSave();
+                }
 
-            save += _persList[_persList.Count - 1].ToSave();
+                if( i < _persList.Count - 1)
+                {
+                    save += "\n";
+                }
+            }
 
             return save;
         }
+
 
         public void SaveData()
         {
@@ -113,17 +134,6 @@ namespace mostenire_faculty
                 {
                     Administrator admin = person as Administrator;
                     Console.WriteLine(admin.AdministratorInfo());
-                }
-            }
-        }
-
-        public void ShowAllPerson()
-        {
-            for (int i = 0; i < _persList.Count; i++)
-            {
-                if(_persList[i] != null)
-                {
-                    Console.WriteLine(_persList[i]);
                 }
             }
         }
@@ -182,24 +192,28 @@ namespace mostenire_faculty
             {
                 Student student = newPerson as Student;
                 _persList.Add(newPerson);
+                SaveData();
                 return true;
             }
             else if (newPerson is Staff)
             {
                 Staff staff = newPerson as Staff;
                 _persList.Add(newPerson);
+                SaveData();
                 return true;
             }
             else if (newPerson is Faculty)
             {
                 Faculty faculty = newPerson as Faculty;
                 _persList.Add(newPerson);
+                SaveData();
                 return true;
             }
             else if (newPerson is Administrator)
             {
                 Administrator admin = newPerson as Administrator;
                 _persList.Add(newPerson);
+                SaveData();
                 return true;
             }
             return false;
@@ -236,6 +250,7 @@ namespace mostenire_faculty
             if (wantedPerson != -1)
             {
                 _persList.RemoveAt(wantedPerson);
+                SaveData();
                 return true;
             }
             return false;
@@ -318,6 +333,7 @@ namespace mostenire_faculty
                 if (_persList[i].Id == id)
                 {
                     _persList[i].Email = newMail;
+                    SaveData();
                     return true;
                 }
             }
@@ -331,6 +347,7 @@ namespace mostenire_faculty
                 if (_persList[i].Id == id)
                 {
                     _persList[i].Password = newPassword;
+                    SaveData();
                     return true;
                 }
             }
@@ -344,12 +361,11 @@ namespace mostenire_faculty
                 if(_persList[i].Id == id)
                 {
                     _persList[i].PhoneNumber = phoneNuber;
+
                     return true;
                 }
             }
             return false;
         }
-
-       
     }
 }

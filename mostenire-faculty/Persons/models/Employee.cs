@@ -17,6 +17,7 @@ namespace mostenire_faculty
             _salary = salary;
             _lengthOfService = lengthOfService;
             _hoursOfService = hourOfService;
+            base.Type = "Employee";
         }
 
         public Employee(string proprietati) : base(proprietati)
@@ -64,7 +65,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return Type + "," + Id + "," + FirstName + "," + LastName + "," + Email + "," + Password + "," + PhoneNumber + "," + _salary + "," + _lengthOfService + "," + _hoursOfService;
+            return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + _salary + "," + _lengthOfService + "," + _hoursOfService;
         }
     }
 }

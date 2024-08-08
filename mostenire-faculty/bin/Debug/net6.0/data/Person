@@ -1,12 +1,13 @@
-Administrator,1,Raul,Alin,Rul@gmail.com,raul,7515215
-Faculty,2,Elena,Maria,Ele@gmail.com,MariELena,751251
-Staff,3,Marius,Marius,Marius@gmail.com,MariusMarius,6236214
-Student,4,Marin,Nea,Nea@gmail.com,MaeinNea,543252
-Student,5,Alexandru,Ion,Ion@gmail.com,AlexIon,1521521
-Student,6,Mary,Anne,Mar@gmail.com,MaryAnne,51251
-Student,6,Mary,Anne,Mar@gmail.com,MaryAnne,51251
-Administrator,1,Raul,Alin,Rul@gmail.com,raul,7515215,5,3,Welcome to the team!
-Staff,3,Marius,Marius,Marius@gmail.com,MariusMarius,6236214,3000,4,30,10
-Student,4,Marin,Nea,Nea@gmail.com,MaeinNea,543252,2,19,4
-Student,5,Alexandru,Ion,Ion@gmail.com,AlexIon,1521521,3,20,2
-Student,6,Mary,Anne,Mar@gmail.com,MaryAnne,51251,1,18,6
+Student,4,Marin,Nea,Nea@gmail.com,MaeinNea,77563489,1,18,2
+Student,5,Alexandru,Ion,Ion@gmail.com,AlexIon,7354325,2,15,2
+Student,6,Mary,Anne,Mar@gmail.com,MaryAnne,7543523,3,15,5
+Student,7,Mary,Anne,Mar@gmail.com,MaryAnne,7435234,4,16,4
+Student,8,Marin,Nea,Nea@gmail.com,MaeinNea,7543252,2,17,2
+Student,9,Alexandru,Ion,Ion@gmail.com,AlexIon,7453452,2,18,1
+Student,10,Mary,Anne,Mar@gmail.com,MaryAnne,763643263,1,16,1
+Administrator,1,Raul,Alin,Rul@gmail.com,raul,7515215,6,5,4,3,2,Buna
+Administrator,2,Ana,Alina,Rul@gmail.com,raul,7515215,6,5,4,3,2,Welcome to the team
+Staff,3,Marius,Marius,Marius@gmail.com,MariusMarius,6236214,3000,4,30,10,654
+Staff,4,Ionut,Bogdan,Marius@gmail.com,MariusMarius,6236214,5000,5,3,5,15
+Faculty,1,Rares,Bogdan,Rares@gmail.com,Lurna,7453543,5151,1,1,2,4
+Faculty,2,Amandin,Luca,Rares@gmail.com,Rager,7454363,5154,4,5,6,4
