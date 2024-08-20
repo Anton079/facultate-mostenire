@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,8 +12,9 @@ namespace mostenire_faculty.Vehicles.models
         private string _steeringWheel;
         private int _airbags;
         private int _trunk;
+      
 
-        public Car(string brand, int id, int horsePower, int newton, int wheel, string steeringWheel, int airbags, int trunk): base( brand,  id,  horsePower,  newton, wheel)
+        public Car(string brand, int id, int horsePower, int newton, int uses, string steeringWheel, int airbags, int trunk): base( brand,  id,  horsePower,  newton, uses)
         {
             _steeringWheel = steeringWheel;
             _airbags = airbags;
@@ -53,7 +55,7 @@ namespace mostenire_faculty.Vehicles.models
             text += "Id " + base.Id + '\n';
             text += "Horse Power " + base.HorsePower + '\n';
             text += "Newton " + base.Newton + '\n';
-            text += "Wheel " + base.Wheel + '\n';
+            text += "uses time" + base.Uses + '\n';
             text += "SteeringWheel " + _steeringWheel + "\n";
             text += "Airbags " + _airbags + "\n";
             text += "Trunk " + _trunk + "\n";
@@ -62,7 +64,7 @@ namespace mostenire_faculty.Vehicles.models
 
         public string ToSave()
         {
-            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Wheel + "," + _steeringWheel + "," + _airbags + "," + _trunk;
+            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + _steeringWheel + "," + _airbags + "," + _trunk;
         }
     }
 }

@@ -45,7 +45,7 @@ namespace mostenire_faculty
                 switch(alegere)
                 {
                     case "1":
-                        _servicePerson.ShowAllPerson();
+                        _servicePerson.ShowPerson();
                         break;
 
                     case "2":

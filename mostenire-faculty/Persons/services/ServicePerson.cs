@@ -185,6 +185,17 @@ namespace mostenire_faculty
             }
         }
 
+        public void ShowPersonByIdVehicle(int idVehicle)
+        {
+            foreach(Person person in _persList)
+            {
+                if(person.VehicleId == idVehicle)
+                {
+                    Console.WriteLine(person.FirstName + " " + person.LastName + " " + person.PhoneNumber + " " + person.Email);
+                }
+            }
+        }
+
         //REST
         public bool AddPerson(Person newPerson)
         {
@@ -237,6 +248,18 @@ namespace mostenire_faculty
             for (int i = 0; i < _persList.Count; i++)
             {
                 if (_persList[i].Id == id && _persList[i].Password == password)
+                {
+                    return _persList[i];
+                }
+            }
+            return null;
+        }
+
+        public Person CheckPersonCredentialsJustWithId(int id)
+        {
+            for (int i = 0; i < _persList.Count; i++)
+            {
+                if (_persList[i].Id == id)
                 {
                     return _persList[i];
                 }
@@ -365,6 +388,36 @@ namespace mostenire_faculty
                     return true;
                 }
             }
+            return false;
+        }
+
+        public bool EditIdVehicle(int idUser, int idVehicle)
+        {
+            for (int i = 0; i < _persList.Count; i++)
+            {
+                if (_persList[i].Id == idUser)
+                {
+                    _persList[i].VehicleId = idVehicle;
+
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool EditAllStudentAVehicle(int idVehicle)
+        {
+            foreach(Person person in _persList)
+            {
+                if(person.Type == "Student")
+                {
+                    int rezultat = idVehicle;
+
+                    Console.WriteLine(rezultat + "A fost editat");
+                    SaveData();
+                }
+            }
+            Console.WriteLine("Nu a mers editul!");
             return false;
         }
     }

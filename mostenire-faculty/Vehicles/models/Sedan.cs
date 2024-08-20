@@ -13,7 +13,7 @@ namespace mostenire_faculty.Vehicles
         private string _confortSporit;
         private string _spatiuRedus;
 
-        public Sedan(string brand, int id, int horsePower, int newton, int wheel, string steeringWheel, int airbags, int trunk, string maiJoasa, string confortSporit, string spatiuRedus) : base( brand,  id,  horsePower,  newton,  wheel,  steeringWheel,  airbags,  trunk)
+        public Sedan(string brand, int id, int horsePower, int newton, int uses, string steeringWheel, int airbags, int trunk, string maiJoasa, string confortSporit, string spatiuRedus) : base( brand,  id,  horsePower,  newton,  uses,  steeringWheel,  airbags,  trunk)
         {
             _maiJoasa = maiJoasa;
             _confortSporit = confortSporit;
@@ -54,7 +54,7 @@ namespace mostenire_faculty.Vehicles
             text += "Id " + base.Id + '\n';
             text += "Horse Power " + base.HorsePower + '\n';
             text += "Newton " + base.Newton + '\n';
-            text += "Wheel " + base.Wheel + '\n';
+            text += "Uses time " + base.Uses + '\n';
             text += "SteeringWheel " + base.SteeringWheel + "\n";
             text += "Airbags " + base.Airbags + "\n";
             text += "Trunk " + base.Trunk + "\n";
@@ -66,7 +66,7 @@ namespace mostenire_faculty.Vehicles
 
         public string ToSave()
         {
-            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Wheel + "," + base.SteeringWheel + "," + base.Airbags + "," + base.Trunk + "," + _maiJoasa + "," + _confortSporit + "," + _spatiuRedus;
+            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + base.SteeringWheel + "," + base.Airbags + "," + base.Trunk + "," + _maiJoasa + "," + _confortSporit + "," + _spatiuRedus;
         }
     }
 }

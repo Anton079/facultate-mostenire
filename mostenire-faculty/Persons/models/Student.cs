@@ -13,7 +13,7 @@ namespace mostenire_faculty
         private int _studentdAge;
         private int _remainingExams;
 
-        public Student(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int schoolYear, int studentAge, int remainingExams) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber)
+        public Student(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int vehicleId, int schoolYear, int studentAge, int remainingExams) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber, vehicleId)
         {
             _schoolYear = schoolYear;
             _studentdAge = studentAge;
@@ -25,9 +25,9 @@ namespace mostenire_faculty
         {
             string[] token = prorpeitati.Split(',');
 
-            _schoolYear = int.Parse(token[7]);
-            _studentdAge = int.Parse(token[8]);
-            _remainingExams = int.Parse(token[9]);
+            _schoolYear = int.Parse(token[8]);
+            _studentdAge = int.Parse(token[9]);
+            _remainingExams = int.Parse(token[10]);
         }
 
         public int SchoolYear
@@ -58,6 +58,7 @@ namespace mostenire_faculty
             text += "Email " + base.Email + "\n";
             text += "Password " + base.Password + "\n";
             text += "Phone number" + base.PhoneNumber + "\n";
+            text += "vehicle id " + base.VehicleId + "\n";
             text += "School Year " + _schoolYear + "\n";
             text += "Student age " + _studentdAge + "\n";
             text += "RemainingExams " + _remainingExams + "\n";
@@ -66,7 +67,7 @@ namespace mostenire_faculty
 
         public string ToSave()
         {
-            return base.Type + "," +base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," +  _schoolYear + "," + _studentdAge + "," + _remainingExams;
+            return base.Type + "," +base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," +  base.VehicleId + "," +_schoolYear + "," + _studentdAge + "," + _remainingExams;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace mostenire_faculty
         private string _email;
         private string _password;
         private int _phoneNumber;
+        private int _vehicleId;
 
         public Person(string proprietati)
         {
@@ -27,10 +28,10 @@ namespace mostenire_faculty
             _email = token[4];
             _password = token[5];
             _phoneNumber = int.Parse(token[6]);
-
+            _vehicleId = int.Parse(token[7]);
         }
 
-        public Person(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber)
+        public Person(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int vehicleId)
         {
             _type = type;
             _id = id;
@@ -39,6 +40,7 @@ namespace mostenire_faculty
             _email = email;
             _password = password;
             _phoneNumber = phoneNumber;
+            _vehicleId = vehicleId;
         }
 
         public string Type
@@ -83,6 +85,12 @@ namespace mostenire_faculty
             set { _phoneNumber = value; }
         }
 
+        public int VehicleId
+        {
+            get { return _vehicleId; }
+            set { _vehicleId = value; }
+        }
+
         public string PersonInfo()
         {
             string text = " ";
@@ -93,12 +101,13 @@ namespace mostenire_faculty
             text += "Email " + _email + "\n";
             text += "Password " + _password + "\n";
             text += "Phone Numer " + _phoneNumber + "\n";
+            text += "vehicle id " + _vehicleId + "\n";
             return text;
         }
 
         public string ToSave()
         {
-            return _type + "," +_id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber;
+            return _type + "," +_id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber + "," + _vehicleId;
         }
     }
 }

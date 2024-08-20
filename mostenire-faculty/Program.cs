@@ -55,7 +55,6 @@ internal class Program
 
         ServicePerson service = new ServicePerson();
 
-        service.SaveData();
 
         //bool passwordEdited = service.EditPasswordById(1, "parolaPusaAcum");
         //if (passwordEdited)
@@ -68,10 +67,13 @@ internal class Program
         //}
 
 
+        service.AddAllStudentAVehicle(2);
+
+
 
         //service.SaveData();
 
-       // service.LoadData();
+        // service.LoadData();
 
         //service.ShowPerson();
         //ServicePerson service = new ServicePerson();

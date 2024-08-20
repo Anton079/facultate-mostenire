@@ -12,7 +12,7 @@ namespace mostenire_faculty
         private int _lengthOfService;
         private int _hoursOfService;
 
-        public Employee(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber, int salary, int lengthOfService, int hourOfService) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber)
+        public Employee(string type, int id, string firstName, string lastName, string email, string password, int phoneNumber,int vehicleId, int salary, int lengthOfService, int hourOfService) : base( type,  id,  firstName,  lastName,  email,  password,  phoneNumber, vehicleId)
         {
             _salary = salary;
             _lengthOfService = lengthOfService;
@@ -24,9 +24,9 @@ namespace mostenire_faculty
         {
             string[] token = proprietati.Split(',');
 
-            _salary = int.Parse(token[7]);
-            _lengthOfService = int.Parse(token[8]);
-            _hoursOfService = int.Parse(token[9]);
+            _salary = int.Parse(token[8]);
+            _lengthOfService = int.Parse(token[9]);
+            _hoursOfService = int.Parse(token[10]);
         }
 
         public int Salary

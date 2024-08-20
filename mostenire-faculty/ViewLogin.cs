@@ -143,7 +143,10 @@ namespace mostenire_faculty
                     Console.WriteLine("Cati studenti nu ati trecut?");
                     int studentUnPast = Int32.Parse(Console.ReadLine());
 
-                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, salary, lenghOfService, hoursOfService, studentPast, studentUnPast);
+                    Console.WriteLine("Detineti vreo masina?");
+                    int idFacultyvehicle = Int32.Parse(Console.ReadLine());
+
+                    Faculty newFaculty = new Faculty(typeUser, idGenerat, firstName, lastName, userMail, password, phoneNumber, idFacultyvehicle, salary, lenghOfService, hoursOfService, studentPast, studentUnPast);
 
                     _person.AddPerson(newFaculty);
                     _person.SaveData();
@@ -179,7 +182,10 @@ namespace mostenire_faculty
                     Console.WriteLine("Ce salariu ai avut inainte?");
                     int salaryEmployee = Int32.Parse(Console.ReadLine());
 
-                    Employee newEmployee = new Employee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
+                    Console.WriteLine("Detineti vreo masina?");
+                    int vehicleId = Int32.Parse(Console.ReadLine());
+
+                    Employee newEmployee = new Employee(typeUserEmployee, idGeneratEmployee, firstNameEmployee, lastNameEmployee, userMailEmployee, passwordEmployee, phoneNumberEmployee, vehicleId, hoursOfServiceEmployee, lenghOfServiceEmployee, salaryEmployee);
 
                     _person.AddPerson(newEmployee);
                     _person.SaveData();
@@ -222,9 +228,12 @@ namespace mostenire_faculty
                     Console.WriteLine("Cate probleme ai rezolvate?");
                     int ctProblemSolved = Int32.Parse(Console.ReadLine());
 
+                    Console.WriteLine("Detineti vreo masina?");
+                    int idAdimistratorVehicle = Int32.Parse(Console.ReadLine());
+
                     string messagesReceived = " ";
 
-                    Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved, messagesReceived);
+                    Administrator newAdministrator = new Administrator(typeUserAdministrator, idGeneratAdministrator, firstNameAdministrator, lastNameAdministrator, userMailAdministrator, passwordAdministrator, phoneNumberAdministrator, idAdimistratorVehicle, salaryAdministrator, lenghOfServiceAdministrator, hoursOfServiceAdministrator, ctOrganizedEvent, ctProblemSolved, messagesReceived);
 
                     _person.AddPerson(newAdministrator);
                     _person.SaveData();
@@ -258,9 +267,12 @@ namespace mostenire_faculty
                     Console.WriteLine("In ce an esti la facultate?");
                     int schoolYear = Int32.Parse(Console.ReadLine());
 
+                    Console.WriteLine("Detineti vreo masina?");
+                    int idStudentVehicle = Int32.Parse(Console.ReadLine());
+
                     int remainingExams = 0;
 
-                    Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, studentdAge, schoolYear, remainingExams);
+                    Student newStudent = new Student(typeUserStudent, idGeneratStudent, firstNameStudent, lastNameStudent, userMailStudent, passwordStudent, phoneNumberStudent, idStudentVehicle, studentdAge, schoolYear, remainingExams);
 
                     _person.AddPerson(newStudent);
                     _person.SaveData();
@@ -303,7 +315,10 @@ namespace mostenire_faculty
                     Console.WriteLine("De cate ori ati facut inventarul?");
                     int invetoryMade = Int32.Parse(Console.ReadLine());
 
-                    Staff newStaff = new Staff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, salaryStaff, lenghOfServiceStaff, hoursOfServiceStaff, buildingCleaned, invetoryMade);
+                    Console.WriteLine("Aveti vreo masina?");
+                    int vehicleStaffId = Int32.Parse(Console.ReadLine());
+
+                    Staff newStaff = new Staff(typeUserStaff, idGeneratStaff, firstNameStaff, lastNameStaff, userMailStaff, passwordStaff, phoneNumberStaff, vehicleStaffId ,salaryStaff, lenghOfServiceStaff, hoursOfServiceStaff, buildingCleaned, invetoryMade);
 
                     _person.AddPerson(newStaff);
                     _person.SaveData();

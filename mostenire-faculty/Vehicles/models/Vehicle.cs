@@ -12,7 +12,7 @@ namespace mostenire_faculty
         private int _id;
         private int _horsePower;
         private int _newton;
-        private int _wheel;
+        private int _uses;
 
         public Vehicle(string proprietati)
         {
@@ -22,7 +22,7 @@ namespace mostenire_faculty
             _id = int.Parse(token[1]);
             _horsePower = int.Parse(token[2]);
             _newton = int.Parse(token[3]);
-            _wheel = int.Parse(token[4]);
+            _uses = int.Parse(token[4]);
         }
 
         public Vehicle(string brand, int id, int horsePower, int newton, int wheel)
@@ -31,7 +31,7 @@ namespace mostenire_faculty
             _id = id;
             _horsePower = horsePower;
             _newton = newton;
-            _wheel = wheel;
+            _uses = wheel;
         }
 
         public string Brand
@@ -58,10 +58,10 @@ namespace mostenire_faculty
             set { _newton = value; }
         }
 
-        public int Wheel
+        public int Uses
         {
-            get { return _wheel; }
-            set { _wheel = value; }
+            get { return _uses; }
+            set { _uses = value; }
         }
 
         public string CarInfo()
@@ -71,13 +71,13 @@ namespace mostenire_faculty
             text += "Id " + _id + '\n';
             text += "Horse Power " + _horsePower + '\n';
             text += "Newton " + _newton + '\n';
-            text += "Wheel " + _wheel + '\n';
+            text += "uses time" + _uses + '\n';
             return text;
         }
 
         public string ToSave()
         {
-            return _brand + "," + _id + "," + _horsePower + "," + _newton + "," + Wheel;
+            return _brand + "," + _id + "," + _horsePower + "," + _newton + "," + _uses;
         }
 
     }

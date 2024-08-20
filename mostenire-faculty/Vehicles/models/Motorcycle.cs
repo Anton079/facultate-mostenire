@@ -13,7 +13,7 @@ namespace mostenire_faculty.Vehicles.models
         private string _kickStand;
         private string _cluchLever;
 
-        public Motorcycle(string brand, int id, int horsePower, int newton, int wheel, string handleBars, string kickStand, string cluchLever): base(brand,id,horsePower,newton,wheel)
+        public Motorcycle(string brand, int id, int horsePower, int newton, int uses, string handleBars, string kickStand, string cluchLever): base(brand,id,horsePower,newton,uses)
         {
             _handleBars = handleBars;
             _kickStand = kickStand;
@@ -54,7 +54,7 @@ namespace mostenire_faculty.Vehicles.models
             text += "Id " + base.Id + '\n';
             text += "Horse Power " + base.HorsePower + '\n';
             text += "Newton " + base.Newton + '\n';
-            text += "Wheel " + base.Wheel + '\n';
+            text += "Uses time " + base.Uses + '\n';
             text += "HandleBard " + _handleBars + "\n";
             text += "KickStand " + _kickStand + "\n";
             text += "CluchLver " + _cluchLever + "\n";
@@ -63,7 +63,7 @@ namespace mostenire_faculty.Vehicles.models
 
         public string ToSave()
         {
-            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Wheel + "," + _handleBars + "," + _kickStand + "," + _cluchLever;
+            return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + _handleBars + "," + _kickStand + "," + _cluchLever;
         }
     }
 }

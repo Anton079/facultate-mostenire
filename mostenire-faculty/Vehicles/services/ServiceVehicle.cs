@@ -116,7 +116,7 @@ namespace mostenire_faculty.Vehicles.services
         {
             foreach (Vehicle showVehicle in _vehicleList)
             {
-                if (showVehicle is Vehicle)
+                if (showVehicle is Sedan)
                 {
                     Sedan sedan = showVehicle as Sedan;
                     Console.WriteLine(sedan.SedanInfo());
@@ -191,6 +191,20 @@ namespace mostenire_faculty.Vehicles.services
             }
         }
 
+        public void ShowMostUsedVehicle()
+        {
+            int idMostUsed = ' ';
+
+            foreach (Vehicle vehicle in _vehicleList)
+            {
+                if(vehicle.Uses < idMostUsed)
+                {
+                    idMostUsed = vehicle.Uses;
+                }
+            }
+            Console.WriteLine(idMostUsed);
+        }
+
         //REST
         public bool AddVehicle(Vehicle newVehicle)
         {
@@ -243,7 +257,6 @@ namespace mostenire_faculty.Vehicles.services
             if (idVehicle != -1)
             {
                 _vehicleList.RemoveAt(idVehicle);
-                SaveData();
                 return true;
             }
             return false;
