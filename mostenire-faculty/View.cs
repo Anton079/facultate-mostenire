@@ -28,7 +28,7 @@ namespace mostenire_faculty
             Console.WriteLine("Apasati tasta 3 pentru a vedea ce-a mai frecventata masina");
             Console.WriteLine("Apasati tasta 4 pentru a sterge o masina");
             Console.WriteLine("Apasati tasta 5 pentru a edita vehiculul id");
-            Console.WriteLine("Apasati tasta 6 pentru a adauga tuturor studentilor un vehicul");
+            Console.WriteLine("Apasati tasta 6 pentru a edita tuturor studentilor un vehicul");
         }
 
         public void play()
@@ -58,7 +58,9 @@ namespace mostenire_faculty
                     EditAvehicleIdFromAPerson();
                     break;
 
-                //case "6":
+                case "6":
+                    EditAllStudentsAVehicle();
+                    break;
             }
         }
 
@@ -105,12 +107,21 @@ namespace mostenire_faculty
             servicePerson.SaveData();
         }
 
-        public void AddAllStudentsAVehicle()
+        public void EditAllStudentsAVehicle()
         {
-            Console.WriteLine("Ce id are vehicle pe care doriti sa o adaugti la toti studentii?");
+            Console.WriteLine("Ce id are vehiculul pe care vreti sa il puneti in loc la actualul vehicul?");
             int idVehicle = Int32.Parse(Console.ReadLine());
 
-            
+            if (servicePerson.EditAllStudentAVehicle(idVehicle))
+            {
+                Console.WriteLine("Editul a fost reusit!");
+            }
+            else
+            {
+                Console.WriteLine("Editul nu a reusit!");
+            }
+
+
         }
     }
 }

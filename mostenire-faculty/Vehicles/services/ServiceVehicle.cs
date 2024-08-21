@@ -254,10 +254,13 @@ namespace mostenire_faculty.Vehicles.services
 
         public bool RemoveVehicle(int idVehicle)
         {
-            if (idVehicle != -1)
+            for(int i = 0; i < _vehicleList.Count; i++)
             {
-                _vehicleList.RemoveAt(idVehicle);
-                return true;
+                if (_vehicleList[i].Id == idVehicle)
+                {
+                    _vehicleList.RemoveAt(i);
+                    return true;
+                }
             }
             return false;
         }

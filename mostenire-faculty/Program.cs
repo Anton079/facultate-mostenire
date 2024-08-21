@@ -53,7 +53,7 @@ internal class Program
         ////    Console.WriteLine("Email nu a fost modificat!");
         ////}
 
-        ServicePerson service = new ServicePerson();
+        //ServicePerson service = new ServicePerson();
 
 
         //bool passwordEdited = service.EditPasswordById(1, "parolaPusaAcum");
@@ -67,7 +67,7 @@ internal class Program
         //}
 
 
-        service.AddAllStudentAVehicle(2);
+        //service.AddAllStudentAVehicle(2);
 
 
 
@@ -115,5 +115,34 @@ internal class Program
 
 
         //  Console.WriteLine(servicePerson.ToSaveAll());
+
+        //         ============================ VIEW NOU TEST=============================================
+
+        ServicePerson servicePerson = new ServicePerson();
+
+        ////ex 1
+        //int testVehicleId = 1;
+        //servicePerson.ShowPersonByIdVehicle(testVehicleId);
+
+        ////ex 3
+        //int personId = 1; 
+        //int newVehicleId = 2; 
+        //bool edited = servicePerson.EditIdVehicle(personId, newVehicleId);
+
+        //Person person = servicePerson.CheckPersonCredentialsJustWithId(personId);
+        //if (person != null && person.VehicleId == newVehicleId)
+        //{
+        //    Console.WriteLine("ID-ul vehiculului a fost modificat cu succes.");
+        //}
+        //else
+        //{
+        //    Console.WriteLine("ID-ul vehiculului nu a fost modificat.");
+        //}
+
+        //ex 4
+        int newVehicleId = 2; 
+        bool edited = servicePerson.EditAllStudentAVehicle(newVehicleId);
+        servicePerson.SaveData();
+
     }
 }

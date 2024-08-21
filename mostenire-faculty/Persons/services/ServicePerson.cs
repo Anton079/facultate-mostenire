@@ -407,17 +407,18 @@ namespace mostenire_faculty
 
         public bool EditAllStudentAVehicle(int idVehicle)
         {
+            bool edited = false;
+
             foreach(Person person in _persList)
             {
                 if(person.Type == "Student")
                 {
-                    int rezultat = idVehicle;
+                    person.VehicleId = idVehicle;
 
-                    Console.WriteLine(rezultat + "A fost editat");
                     SaveData();
+                    return true;
                 }
             }
-            Console.WriteLine("Nu a mers editul!");
             return false;
         }
     }
