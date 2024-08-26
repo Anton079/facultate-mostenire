@@ -19,6 +19,7 @@ namespace mostenire_faculty
             Console.WriteLine("Apasă tasta 2 pentru a modifica parola!");
             Console.WriteLine("Apasă tasta 3 pentru a vedea ce an ești la facultate");
             Console.WriteLine("Apasă tasta 4 pentru a vedea câte examene mai ai de dat!");
+            Console.WriteLine("Apasa tasta 5 pentru a raporta o problema la administrator");
         }
 
         public void play()
@@ -45,6 +46,10 @@ namespace mostenire_faculty
 
                     case "4":
                         ShowRemainingExams();
+                        break;
+
+                    case "5":
+                        ModificaEmail();
                         break;
                 }
             }
@@ -90,6 +95,24 @@ namespace mostenire_faculty
         public void ShowRemainingExams()
         {
             Console.WriteLine($"Examene rămase: {student.RemainingExams}");
+        }
+
+        public void SendMessageToAdmin()
+        {
+            Console.WriteLine("Ce mesaj vrei sa trimiti!");
+            string msgToSend = Console.ReadLine();
+
+            Console.WriteLine("Ce id are adminul caruia vrei sa ii trimiti mesajul?");
+            int idAdmin = Int32.Parse(Console.ReadLine());
+
+            if (msgToSend != null)
+            {
+                _personService.NewMessageSend(idAdmin ,msgToSend);
+            }
+            else
+            {
+                Console.WriteLine("Mesaul este gol, trebuie sa introduci ceva pentru a trimite!");
+            }
         }
     }
 }

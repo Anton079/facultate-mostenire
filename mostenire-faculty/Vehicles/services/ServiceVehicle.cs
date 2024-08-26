@@ -112,7 +112,39 @@ namespace mostenire_faculty.Vehicles.services
         //CRUD
 
         //SHOW
-        public void ShowVehicle()
+        public bool ShowVehiclesByCaroserieType(string caroserieType)
+        {
+            bool found = false;
+
+            foreach (Vehicle vehicleWanted in _vehicleList)
+            {
+                if (vehicleWanted.Brand == caroserieType)
+                {
+                    found = true;
+                    if (vehicleWanted is Sedan sedan)
+                    {
+                        Console.WriteLine(sedan.SedanInfo());
+                    }
+                    else if (vehicleWanted is Suv suv)
+                    {
+                        Console.WriteLine(suv.SuvInfo());
+                    }
+                    else if (vehicleWanted is Coupe coupe)
+                    {
+                        Console.WriteLine(coupe.CoupeInfo());
+                    }
+                    else if (vehicleWanted is Motorcycle motorcycle)
+                    {
+                        Console.WriteLine(motorcycle.MotorcycleInfo());
+                    }
+                }
+            }
+
+            return found;
+        }
+
+
+        public void ShowVehicles()
         {
             foreach (Vehicle showVehicle in _vehicleList)
             {
@@ -129,7 +161,7 @@ namespace mostenire_faculty.Vehicles.services
                 else if (showVehicle is Coupe)
                 {
                     Coupe coupe = showVehicle as Coupe;
-                    Console.WriteLine(coupe.CopueInfo());
+                    Console.WriteLine(coupe.CoupeInfo());
                 }
                 else if (showVehicle is Motorcycle)
                 {
@@ -193,16 +225,22 @@ namespace mostenire_faculty.Vehicles.services
 
         public void ShowMostUsedVehicle()
         {
-            int idMostUsed = ' ';
+            int MostUsed = ' ';
+            string typeCar = " ";
+            int newton = ' ';
+            int horsePower = ' ';
 
             foreach (Vehicle vehicle in _vehicleList)
             {
-                if(vehicle.Uses < idMostUsed)
+                if(vehicle.Uses < MostUsed)
                 {
-                    idMostUsed = vehicle.Uses;
+                    MostUsed = vehicle.Uses;
+                    typeCar = vehicle.Brand;
+                    newton = vehicle.Newton;
+                    horsePower = vehicle.HorsePower;
                 }
             }
-            Console.WriteLine(idMostUsed);
+            Console.WriteLine($"Ce a mai uzata masina este {MostUsed} , {typeCar}, {newton} , {horsePower}");
         }
 
         //REST
@@ -244,7 +282,7 @@ namespace mostenire_faculty.Vehicles.services
             Random rand = new Random();
             int id = rand.Next(1, 10000000);
 
-            while (FindIdByBrand(id) != -1)
+            while (FindBrandById(id) != null)
             {
                 id = rand.Next(1, 10000000);
             }
@@ -252,13 +290,14 @@ namespace mostenire_faculty.Vehicles.services
             return id;
         }
 
-        public bool RemoveVehicle(int idVehicle)
+        public bool RemoveAVehicle(int idVehicle)
         {
             for(int i = 0; i < _vehicleList.Count; i++)
             {
                 if (_vehicleList[i].Id == idVehicle)
                 {
                     _vehicleList.RemoveAt(i);
+                    SaveData();
                     return true;
                 }
             }
@@ -278,7 +317,19 @@ namespace mostenire_faculty.Vehicles.services
             return -1;
         }
 
-        public string FindVehicleBrandById(int id)
+        public bool FindVehicleById(int id)
+        {
+            for (int i = 0; i < _vehicleList.Count; i++)
+            {
+                if (_vehicleList[i].Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public string FindBrandById(int id)
         {
             for (int i = 0; i < _vehicleList.Count; i++)
             {
@@ -290,13 +341,13 @@ namespace mostenire_faculty.Vehicles.services
             return null;
         }
 
-        public int FindIdByBrand(int id)
+        public int FindIdByBrand(string brand)
         {
             for (int i = 0; i < _vehicleList.Count; i++)
             {
-                if (_vehicleList[i].Id == id)
+                if (_vehicleList[i].Brand == brand)
                 {
-                    return i;
+                    return _vehicleList[i].Id;
                 }
             }
             return -1;

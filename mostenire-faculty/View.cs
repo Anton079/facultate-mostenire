@@ -14,7 +14,7 @@ namespace mostenire_faculty
         private ServicePerson servicePerson;
         private ServiceVehicle serviceVehicle;
 
-      
+        
         public View(ServicePerson servicePerson, ServiceVehicle serviceVehicle)
         {
             this.servicePerson = servicePerson;
@@ -29,61 +29,92 @@ namespace mostenire_faculty
             Console.WriteLine("Apasati tasta 4 pentru a sterge o masina");
             Console.WriteLine("Apasati tasta 5 pentru a edita vehiculul id");
             Console.WriteLine("Apasati tasta 6 pentru a edita tuturor studentilor un vehicul");
+            Console.WriteLine("Apasati tasta 7 pentru a adauga un brand unei persoane la vehicul");
+            Console.WriteLine("Apasati tasta 8 pentru a vedea toate masinile dupa un tip de caroserie");
         }
 
         public void play()
         {
             bool running = true;
-            string alegere = Console.ReadLine();
-
-            switch(alegere)
+            while (running)
             {
-                case "1":
-                    serviceVehicle.ShowVehicle();
-                    break;
+                Meniu();
+                string alegere = Console.ReadLine();
 
-                case "2":
-                    ShowPersonByIdvehicle();
-                    break;
+                switch (alegere)
+                {
+                    case "1":
+                        serviceVehicle.ShowVehicles();
+                        break;
 
-                case "3":
-                    serviceVehicle.ShowMostUsedVehicle();
-                    break;
+                    case "2":
+                        ShowPersonByIdvehicle();
+                        break;
 
-                case "4":
-                    RemoveAVehicle();
-                    break;
+                    case "3":
+                        serviceVehicle.ShowMostUsedVehicle();
+                        break;
 
-                case "5":
-                    EditAvehicleIdFromAPerson();
-                    break;
+                    case "4":
+                        RemoveVehicle();
+                        break;
 
-                case "6":
-                    EditAllStudentsAVehicle();
-                    break;
+                    case "5":
+                        EditAvehicleIdFromAPerson();
+                        break;
+
+                    case "6":
+                        EditAllStudentsAVehicle();
+                        break;
+
+                    case "7":
+                        AddVehicle();
+                        break;
+
+                    case "8":
+                        ShowVehicleByType();
+                        break;
+                }
+            }
+
+        }
+
+        public void ShowVehicleByType()
+        {
+            Console.WriteLine("Ce caroserie vrei sa vezi?");
+            string type = Console.ReadLine();
+
+            if (serviceVehicle.ShowVehiclesByCaroserieType(type))
+            {
+                Console.WriteLine($"Toate mașinile cu tipul de caroserie '{type}' sunt afișate mai sus.");
+            }
+            else
+            {
+                Console.WriteLine($"Nu s-au găsit mașini cu tipul de caroserie '{type}'.");
             }
         }
 
         public void ShowPersonByIdvehicle()
         {
-            Console.WriteLine("Ce id are vehiculul pe care il cauti");
+            Console.WriteLine("Ce id are vehiculul persoanei respective");
             int idWanted = Int32.Parse(Console.ReadLine());
 
             servicePerson.ShowPersonByIdVehicle(idWanted);
         }
 
-        public void RemoveAVehicle()
+        public void RemoveVehicle()
         {
-            Console.WriteLine("Ce id are masina vrei sa stergi");
+            Console.WriteLine("Ce id are masina pe care vrei sa o stergi");
             int idWanted = Int32.Parse(Console.ReadLine());
 
-            if (serviceVehicle.RemoveVehicle(idWanted))
+            if (serviceVehicle.FindVehicleById(idWanted))
             {
-                Console.WriteLine("Masina a fost stearsa");
+                Console.WriteLine($"Masina cu id-ul {idWanted} a fost stearsa");
+                serviceVehicle.RemoveAVehicle(idWanted);
             }
             else
             {
-                Console.WriteLine("Masina nu a putut fi gasita!");
+                Console.WriteLine($"Masina cu id-ul {idWanted} nu a putut fi gasita!");
             }
             
         }
@@ -93,7 +124,7 @@ namespace mostenire_faculty
             Console.WriteLine("Ce id are persoana caruia doriti sa ii editati vehiculul?");
             int idPerson = Int32.Parse(Console.ReadLine());
 
-            Console.WriteLine("Ce id are masina pe care doriti sa o editati");
+            Console.WriteLine("Ce id are masina cu care doriti sa o modificati cu actuala?");
             int idVehicle = int.Parse(Console.ReadLine());
 
             if(servicePerson.EditIdVehicle(idPerson, idVehicle))
@@ -109,7 +140,7 @@ namespace mostenire_faculty
 
         public void EditAllStudentsAVehicle()
         {
-            Console.WriteLine("Ce id are vehiculul pe care vreti sa il puneti in loc la actualul vehicul?");
+            Console.WriteLine("Ce id are vehiculul pe care vreti sa il puneti in locul la actualele vehicule?");
             int idVehicle = Int32.Parse(Console.ReadLine());
 
             if (servicePerson.EditAllStudentAVehicle(idVehicle))
@@ -120,8 +151,28 @@ namespace mostenire_faculty
             {
                 Console.WriteLine("Editul nu a reusit!");
             }
+            servicePerson.SaveData();
 
 
+        }
+
+        public void AddVehicle()
+        {
+            Console.WriteLine("Ce id are persoana care doreste o masina?");
+            int idPerson = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ce masina doreste persoana dintre Coupe, Motorcycle, Suv si sedan? ");
+            string wantedVehicle = Console.ReadLine();
+
+            if(wantedVehicle is Vehicle)
+            {
+                servicePerson.EditIdVehicle(idPerson, serviceVehicle.FindIdByBrand(wantedVehicle));
+                servicePerson.SaveData();
+            }
+            else
+            {
+                Console.WriteLine("Masina nu a fost gasita!");
+            }
         }
     }
 }

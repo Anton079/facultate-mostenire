@@ -46,7 +46,7 @@ namespace mostenire_faculty.Vehicles.models
             set { _spatiuRedusPasageri = value;}
         }
 
-        public string CopueInfo()
+        public string CoupeInfo()
         {
             string text = " ";
             text += "Brand " + base.Brand + '\n';

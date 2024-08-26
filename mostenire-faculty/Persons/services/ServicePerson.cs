@@ -111,26 +111,53 @@ namespace mostenire_faculty
         //CRUD
 
         //SHOW
-        public void ShowPerson()
+        public void ShowPersonByType(string personType)
         {
             foreach (Person person in _persList)
             {
-                if (person is Student)
+                if (person is Student && person.Type == personType)
                 {
                     Student student = person as Student;
                     Console.WriteLine(student.StudentInfo());
                 }
-                else if (person is Staff)
+                else if (person is Staff && person.Type == personType)
                 {
                     Staff staff = person as Staff;
                     Console.WriteLine(staff.SaffInfo());
                 }
-                else if (person is Faculty)
+                else if (person is Faculty && person.Type == personType)
                 {
                     Faculty faculty = person as Faculty;
                     Console.WriteLine(faculty.FacultyInfo());
                 }
-                else if (person is Administrator)
+                else if (person is Administrator && person.Type == personType)
+                {
+                    Administrator admin = person as Administrator;
+                    Console.WriteLine(admin.AdministratorInfo());
+                }
+            }
+        }
+
+        public void ShowPerson()
+        {
+            foreach (Person person in _persList)
+            {
+                if (person is Student )
+                {
+                    Student student = person as Student;
+                    Console.WriteLine(student.StudentInfo());
+                }
+                else if (person is Staff )
+                {
+                    Staff staff = person as Staff;
+                    Console.WriteLine(staff.SaffInfo());
+                }
+                else if (person is Faculty )
+                {
+                    Faculty faculty = person as Faculty;
+                    Console.WriteLine(faculty.FacultyInfo());
+                }
+                else if (person is Administrator )
                 {
                     Administrator admin = person as Administrator;
                     Console.WriteLine(admin.AdministratorInfo());
@@ -191,7 +218,7 @@ namespace mostenire_faculty
             {
                 if(person.VehicleId == idVehicle)
                 {
-                    Console.WriteLine(person.FirstName + " " + person.LastName + " " + person.PhoneNumber + " " + person.Email);
+                    Console.WriteLine("Persoana pe care o cauti este: " + person.FirstName + " " + person.LastName + " " + person.PhoneNumber + " " + person.Email);
                 }
             }
         }
@@ -312,6 +339,7 @@ namespace mostenire_faculty
             return -1;
         }
 
+
         public string FindPersonNameById(int id)
         {
             for (int i = 0; i < _persList.Count; i++)
@@ -347,6 +375,19 @@ namespace mostenire_faculty
             }
             return null;
         }
+
+        public Person FindStaffPersonByNameAndLastName(string firstName, string lastName)
+        {
+            for (int i = 0; i < _persList.Count; i++)
+            {
+                if (_persList[i].Type == "Staff" && _persList[i].FirstName == firstName && _persList[i].LastName == lastName)
+                {
+                    return _persList[i];
+                }
+            }
+            return null;
+        }
+
 
         //EDIT
         public bool EditMailById(int id, string newMail)
@@ -400,6 +441,7 @@ namespace mostenire_faculty
                     _persList[i].VehicleId = idVehicle;
 
                     return true;
+
                 }
             }
             return false;
@@ -407,16 +449,12 @@ namespace mostenire_faculty
 
         public bool EditAllStudentAVehicle(int idVehicle)
         {
-            bool edited = false;
-
-            foreach(Person person in _persList)
+            for (int i = 0; i < _persList.Count; i++)
             {
-                if(person.Type == "Student")
+                if (_persList[i] is Student)
                 {
-                    person.VehicleId = idVehicle;
+                    _persList[i].VehicleId = idVehicle;
 
-                    SaveData();
-                    return true;
                 }
             }
             return false;

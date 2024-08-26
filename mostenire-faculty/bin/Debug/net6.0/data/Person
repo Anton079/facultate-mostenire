@@ -1,14 +1,11 @@
-Student,1,Marin,Nea,Nea@gmail.com,MaeinNea,77563489,2,1,18,2
-Student,2,Alexandru,Ion,Ion@gmail.com,AlexIon,7354325,2,2,15,2
-Student,3,Mary,Anne,Mar@gmail.com,MaryAnne,7543523,3,3,15,5
-Student,4,Mary,Anne,Mar@gmail.com,MaryAnne,7435234,4,4,16,4
-Student,5,Marin,Nea,Nea@gmail.com,MaeinNea,7543252,5,2,17,2
-Student,6,Alexandru,Ion,Ion@gmail.com,AlexIon,7453452,6,2,18,1
-Student,7,Mary,Anne,Mar@gmail.com,MaryAnne,763643263,7,1,16,1
-Administrator,8,Raul,Alin,Rul@gmail.com,raul,7515215,8,6,5,4,3,2,Buna
+Student,2,Alexandru,Ion,Ion@gmail.com,AlexIon,7354325,31,2,15,2
+Student,3,Mary,Anne,horia_dragu@yaho0.com,parolaNouaAIci,51515115,31,3,15,5
+Student,4,Mary,Anne,Mar@gmail.com,MaryAnne,7435234,31,4,16,4
+Student,5,Marin,Nea,Nea@gmail.com,MaeinNea,7543252,31,2,17,2
+Student,6,Alexandru,Ion,Ion@gmail.com,AlexIon,7453452,31,2,18,1
+Student,7,Mary,Anne,Mar@gmail.com,MaryAnne,763643263,31,1,16,1
+Administrator,8,Raul,Alin,Rul@gmail.com,raul,7515215,8,6,5,4,3,2,Buna Salut Salut Salut
 Administrator,9,Ana,Alina,Rul@gmail.com,raul,7515215,9,6,5,4,3,2,Welcome to the team
-Staff,10,Marius,Marius,Marius@gmail.com,MariusMarius,6236214,10,3000,4,30,10,654
 Staff,11,Ionut,Bogdan,Marius@gmail.com,MariusMarius,6236214,11,5000,5,3,5,15
-Faculty,12,Rares,Bogdan,Rares@gmail.com,Lurna,7453543,12,5151,1,1,2,4
 Faculty,13,Amandin,Luca,Rares@gmail.com,Rager,7454363,13,5154,4,5,6,4
 Faculty,14,Aradul,Lucaruls,Rares@gmail.com,Rager,745454252,5154,5,5,14,6,4
