@@ -61,28 +61,14 @@ namespace mostenire_faculty.Vehicles.services
             return file;
         }
 
-        public virtual string ToSaveAll()
+        public string ToSaveAll()
         {
             string save = "";
 
             for (int i = 0; i < _vehicleList.Count; i++)
             {
-                if (_vehicleList[i] is Motorcycle)
-                {
-                    save += (_vehicleList[i] as Motorcycle).ToSave();
-                }
-                else if (_vehicleList[i] is Suv)
-                {
-                    save += (_vehicleList[i] as Suv).ToSave();
-                }
-                else if (_vehicleList[i] is Sedan)
-                {
-                    save += (_vehicleList[i] as Sedan).ToSave();
-                }
-                else if (_vehicleList[i] is Coupe)
-                {
-                    save += (_vehicleList[i] as Coupe).ToSave();
-                }
+
+                save += _vehicleList[i].ToSave();
 
                 if (i < _vehicleList.Count - 1)
                 {
