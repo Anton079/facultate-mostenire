@@ -47,7 +47,7 @@ internal class Program
 
         foreach(Person person in _persList)
         {
-            Console.WriteLine(person.PersonInfo())
+            Console.WriteLine(person.PersonInfo());
         }
 
 
@@ -91,9 +91,6 @@ internal class Program
         {
             Console.WriteLine(v.VehicleInfo());
         }
-    }
-}
-
 
 
 
@@ -299,4 +296,4 @@ internal class Program
 
 
     }
-}
+}}
