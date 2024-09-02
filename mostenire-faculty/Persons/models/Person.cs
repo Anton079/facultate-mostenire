@@ -91,7 +91,7 @@ namespace mostenire_faculty
             set { _vehicleId = value; }
         }
 
-        public string PersonInfo()
+        public virtual string PersonInfo()
         {
             string text = " ";
             text += "Type " + _type + "\n";
@@ -105,7 +105,7 @@ namespace mostenire_faculty
             return text;
         }
 
-        public string ToSave()
+        public virtual string ToSave()
         {
             return _type + "," +_id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber + "," + _vehicleId;
         }

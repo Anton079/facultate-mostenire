@@ -47,7 +47,7 @@ namespace mostenire_faculty.Vehicles.models
             set { _cluchLever = value;}
         }
 
-        public string MotorcycleInfo()
+        public override string VehicleInfo()
         {
             string text = " ";
             text += "Brand " + base.Brand + '\n';
@@ -61,7 +61,7 @@ namespace mostenire_faculty.Vehicles.models
             return text;
         }
 
-        public string ToSave()
+        public override string ToSave()
         {
             return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + _handleBars + "," + _kickStand + "," + _cluchLever;
         }

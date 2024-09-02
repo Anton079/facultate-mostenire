@@ -38,7 +38,7 @@ namespace mostenire_faculty
             set { _buildingCleaned = value; }
         }
 
-        public string SaffInfo()
+        public override string PersonInfo()
         {
             string text = " ";
             text += "Type " + base.Type + "\n";
@@ -57,7 +57,7 @@ namespace mostenire_faculty
             return text;
         }
 
-        public string ToSave()
+        public override string ToSave()
         {
             return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + ","+ base.VehicleId + "," + base.Salary + "," + base.LengthOfService + "," + base.HoursOfService + "," + BuildingCleaned + "," + InvetoryMade;
         }

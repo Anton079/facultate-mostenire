@@ -31,6 +31,8 @@ namespace mostenire_faculty
             Console.WriteLine("Apasati tasta 6 pentru a edita tuturor studentilor un vehicul");
             Console.WriteLine("Apasati tasta 7 pentru a adauga un brand unei persoane la vehicul");
             Console.WriteLine("Apasati tasta 8 pentru a vedea toate masinile dupa un tip de caroserie");
+
+
         }
 
         public void play()

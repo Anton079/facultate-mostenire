@@ -47,7 +47,7 @@ namespace mostenire_faculty
             set { _hoursOfService = value; }
         }
 
-        public string EmployeeInfo()
+        public override string PersonInfo()
         {
             string text = " ";
             text += "Type " + Type + "\n";
@@ -63,7 +63,7 @@ namespace mostenire_faculty
             return text;
         }
 
-        public string ToSave()
+        public override string ToSave()
         {
             return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," + _salary + "," + _lengthOfService + "," + _hoursOfService;
         }

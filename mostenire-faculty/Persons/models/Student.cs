@@ -48,7 +48,7 @@ namespace mostenire_faculty
             set { _remainingExams = value; }
         }
 
-        public string StudentInfo()
+        public override string PersonInfo()
         {
             string text = " ";
             text += "Type " + base.Type + "\n";
@@ -65,7 +65,7 @@ namespace mostenire_faculty
             return text;
         }
 
-        public string ToSave()
+        public override string ToSave()
         {
             return base.Type + "," +base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + "," +  base.VehicleId + "," +_schoolYear + "," + _studentdAge + "," + _remainingExams;
         }

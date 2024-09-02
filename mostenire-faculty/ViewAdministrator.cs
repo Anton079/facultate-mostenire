@@ -45,7 +45,7 @@ namespace mostenire_faculty
                 switch(alegere)
                 {
                     case "1":
-                        _servicePerson.ShowPersonByType("Student");
+                        //_servicePerson.ShowPersonByType("Student");
                         break;
 
                     case "2":
@@ -53,7 +53,7 @@ namespace mostenire_faculty
                         break;
 
                     case "3":
-                        _servicePerson.ShowPersonByType("Staff");
+                        //_servicePerson.ShowPersonByType("Staff");
                         break;
 
                     case "4":
@@ -61,7 +61,7 @@ namespace mostenire_faculty
                         break;
 
                     case "5":
-                        _servicePerson.ShowPersonByType("Faculty");
+                        //_servicePerson.ShowPersonByType("Faculty");
                         break;
 
                     case "6":

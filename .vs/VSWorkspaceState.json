@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\mostenire-faculty",
+    "\\mostenire-faculty\\Persons",
+    "\\mostenire-faculty\\Persons\\models",
+    "\\mostenire-faculty\\Persons\\services",
+    "\\mostenire-faculty\\Vehicles",
+    "\\mostenire-faculty\\Vehicles\\models",
+    "\\mostenire-faculty\\Vehicles\\services"
+  ],
+  "SelectedNode": "\\mostenire-faculty\\Persons\\services\\ServicePerson.cs",
+  "PreviewInSolutionExplorer": false
+}

@@ -66,22 +66,7 @@ namespace mostenire_faculty
 
             for (int i = 0; i < _persList.Count; i++)
             {
-                if (_persList[i] is Student)
-                {
-                    save += (_persList[i] as Student).ToSave();
-                }
-                else if (_persList[i] is Staff)
-                {
-                    save += (_persList[i] as Staff).ToSave();
-                }
-                else if (_persList[i] is Faculty)
-                {
-                    save += (_persList[i] as Faculty).ToSave();
-                }
-                else if (_persList[i] is Administrator)
-                {
-                    save += (_persList[i] as Administrator).ToSave();
-                }
+                save += _persList[i].ToSave();
 
                 if( i < _persList.Count - 1)
                 {
@@ -110,58 +95,13 @@ namespace mostenire_faculty
 
         //CRUD
 
-        //SHOW
-        public void ShowPersonByType(string personType)
-        {
-            foreach (Person person in _persList)
-            {
-                if (person is Student && person.Type == personType)
-                {
-                    Student student = person as Student;
-                    Console.WriteLine(student.StudentInfo());
-                }
-                else if (person is Staff && person.Type == personType)
-                {
-                    Staff staff = person as Staff;
-                    Console.WriteLine(staff.SaffInfo());
-                }
-                else if (person is Faculty && person.Type == personType)
-                {
-                    Faculty faculty = person as Faculty;
-                    Console.WriteLine(faculty.FacultyInfo());
-                }
-                else if (person is Administrator && person.Type == personType)
-                {
-                    Administrator admin = person as Administrator;
-                    Console.WriteLine(admin.AdministratorInfo());
-                }
-            }
-        }
+        
 
         public void ShowPerson()
         {
             foreach (Person person in _persList)
             {
-                if (person is Student )
-                {
-                    Student student = person as Student;
-                    Console.WriteLine(student.StudentInfo());
-                }
-                else if (person is Staff )
-                {
-                    Staff staff = person as Staff;
-                    Console.WriteLine(staff.SaffInfo());
-                }
-                else if (person is Faculty )
-                {
-                    Faculty faculty = person as Faculty;
-                    Console.WriteLine(faculty.FacultyInfo());
-                }
-                else if (person is Administrator )
-                {
-                    Administrator admin = person as Administrator;
-                    Console.WriteLine(admin.AdministratorInfo());
-                }
+                Console.WriteLine(person.PersonInfo());
             }
         }
 

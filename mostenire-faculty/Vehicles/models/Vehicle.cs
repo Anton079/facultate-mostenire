@@ -64,7 +64,7 @@ namespace mostenire_faculty
             set { _uses = value; }
         }
 
-        public string CarInfo()
+        public virtual string VehicleInfo()
         {
             string text = " ";
             text += "Brand " + _brand + '\n';
@@ -75,7 +75,7 @@ namespace mostenire_faculty
             return text;
         }
 
-        public string ToSave()
+        public virtual string ToSave()
         {
             return _brand + "," + _id + "," + _horsePower + "," + _newton + "," + _uses;
         }

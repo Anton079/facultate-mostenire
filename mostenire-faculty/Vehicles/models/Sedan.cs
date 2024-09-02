@@ -47,7 +47,7 @@ namespace mostenire_faculty.Vehicles
             set { _spatiuRedus = value; }
         }
 
-        public string SedanInfo()
+        public override string VehicleInfo()
         {
             string text = " ";
             text += "Brand " + base.Brand + '\n';
@@ -64,7 +64,7 @@ namespace mostenire_faculty.Vehicles
             return text;
         }
 
-        public string ToSave()
+        public override string ToSave()
         {
             return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + base.SteeringWheel + "," + base.Airbags + "," + base.Trunk + "," + _maiJoasa + "," + _confortSporit + "," + _spatiuRedus;
         }

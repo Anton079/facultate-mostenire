@@ -61,7 +61,7 @@ namespace mostenire_faculty.Vehicles.services
             return file;
         }
 
-        public string ToSaveAll()
+        public virtual string ToSaveAll()
         {
             string save = "";
 
@@ -123,19 +123,19 @@ namespace mostenire_faculty.Vehicles.services
                     found = true;
                     if (vehicleWanted is Sedan sedan)
                     {
-                        Console.WriteLine(sedan.SedanInfo());
+                        Console.WriteLine(sedan.VehicleInfo());
                     }
                     else if (vehicleWanted is Suv suv)
                     {
-                        Console.WriteLine(suv.SuvInfo());
+                        Console.WriteLine(suv.VehicleInfo());
                     }
                     else if (vehicleWanted is Coupe coupe)
                     {
-                        Console.WriteLine(coupe.CoupeInfo());
+                        Console.WriteLine(coupe.VehicleInfo());
                     }
                     else if (vehicleWanted is Motorcycle motorcycle)
                     {
-                        Console.WriteLine(motorcycle.MotorcycleInfo());
+                        Console.WriteLine(motorcycle.VehicleInfo());
                     }
                 }
             }
@@ -148,26 +148,7 @@ namespace mostenire_faculty.Vehicles.services
         {
             foreach (Vehicle showVehicle in _vehicleList)
             {
-                if (showVehicle is Sedan)
-                {
-                    Sedan sedan = showVehicle as Sedan;
-                    Console.WriteLine(sedan.SedanInfo());
-                }
-                else if (showVehicle is Suv)
-                {
-                    Suv suv = showVehicle as Suv;
-                    Console.WriteLine(suv.SuvInfo());
-                }
-                else if (showVehicle is Coupe)
-                {
-                    Coupe coupe = showVehicle as Coupe;
-                    Console.WriteLine(coupe.CoupeInfo());
-                }
-                else if (showVehicle is Motorcycle)
-                {
-                    Motorcycle motorcycle = showVehicle as Motorcycle;
-                    Console.WriteLine(motorcycle.MotorcycleInfo());
-                }
+                Console.WriteLine(showVehicle.VehicleInfo());
             }
         }
 
@@ -188,26 +169,7 @@ namespace mostenire_faculty.Vehicles.services
         {
             foreach (Vehicle vehicle in _vehicleList)
             {
-                if (vehicle is Suv)
-                {
-                    Suv suv = vehicle as Suv;
-                    Console.WriteLine(suv.Brand);
-                }
-                else if (vehicle is Coupe)
-                {
-                    Sedan sedan = vehicle as Sedan;
-                    Console.WriteLine(sedan.Brand);
-                }
-                else if (vehicle is Motorcycle)
-                {
-                    Motorcycle motorcycle = vehicle as Motorcycle;
-                    Console.WriteLine(motorcycle.Brand);
-                }
-                else if (vehicle is Coupe)
-                {
-                    Coupe coupe = vehicle as Coupe;
-                    Console.WriteLine(coupe.Brand);
-                }
+                Console.WriteLine(vehicle.Brand);
             }
         }
 

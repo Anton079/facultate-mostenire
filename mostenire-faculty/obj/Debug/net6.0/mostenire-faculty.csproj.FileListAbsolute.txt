@@ -12,3 +12,17 @@ C:\mycode\oop\incapsularea\modificatori-de-acces-constructori\mostenire-faculty\
 C:\mycode\oop\incapsularea\modificatori-de-acces-constructori\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.pdb
 C:\mycode\oop\incapsularea\modificatori-de-acces-constructori\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.genruntimeconfig.cache
 C:\mycode\oop\incapsularea\modificatori-de-acces-constructori\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\ref\mostenire-faculty.dll
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.GeneratedMSBuildEditorConfig.editorconfig
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.AssemblyInfoInputs.cache
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.AssemblyInfo.cs
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.csproj.CoreCompileInputs.cache
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.dll
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\refint\mostenire-faculty.dll
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.pdb
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\bin\Debug\net6.0\mostenire-faculty.exe
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\bin\Debug\net6.0\mostenire-faculty.deps.json
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\bin\Debug\net6.0\mostenire-faculty.runtimeconfig.json
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\bin\Debug\net6.0\mostenire-faculty.dll
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\bin\Debug\net6.0\mostenire-faculty.pdb
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\mostenire-faculty.genruntimeconfig.cache
+C:\mycode\oop\mostenire\mostenire-faculty\mostenire-faculty\obj\Debug\net6.0\ref\mostenire-faculty.dll
