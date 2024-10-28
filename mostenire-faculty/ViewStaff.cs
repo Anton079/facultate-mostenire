@@ -51,7 +51,7 @@ namespace mostenire_faculty
                         break;
 
                     case "4":
-                        _person.ShowSalary();
+                        _person.ShowCuratenie();
                         break;
 
                     case "5":

@@ -17,6 +17,8 @@ namespace mostenire_faculty
         private int _phoneNumber;
         private int _vehicleId;
 
+       
+
         public Person(string proprietati)
         {
             string[] token = proprietati.Split(',');
@@ -109,5 +111,13 @@ namespace mostenire_faculty
         {
             return _type + "," +_id + "," + _firstName + "," + _lastName + "," + _email + "," + _password + "," + _phoneNumber + "," + _vehicleId;
         }
+
+
+        public virtual  int  GetSalary()
+        {
+            return -1;
+        }
+
+        
     }
 }

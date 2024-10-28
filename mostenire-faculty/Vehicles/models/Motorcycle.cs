@@ -65,5 +65,7 @@ namespace mostenire_faculty.Vehicles.models
         {
             return base.Brand + "," + base.Id + "," + base.HorsePower + "," + base.Newton + "," + base.Uses + "," + _handleBars + "," + _kickStand + "," + _cluchLever;
         }
+
+
     }
 }

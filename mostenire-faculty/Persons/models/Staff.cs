@@ -61,5 +61,10 @@ namespace mostenire_faculty
         {
             return base.Type + "," + base.Id + "," + base.FirstName + "," + base.LastName + "," + base.Email + "," + base.Password + "," + base.PhoneNumber + ","+ base.VehicleId + "," + base.Salary + "," + base.LengthOfService + "," + base.HoursOfService + "," + BuildingCleaned + "," + InvetoryMade;
         }
+
+        public override int GetSalary()
+        {
+            return Salary;
+        }
     }
 }

@@ -122,21 +122,7 @@ namespace mostenire_faculty
         {
             foreach (Person person in _persList)
             {
-                if (person is Staff)
-                {
-                    Staff staff = person as Staff;
-                    Console.WriteLine(staff.Salary);
-                }
-                else if (person is Faculty)
-                {
-                    Faculty faculty = person as Faculty;
-                    Console.WriteLine(faculty.Salary);
-                }
-                else if (person is Administrator)
-                {
-                    Administrator admin = person as Administrator;
-                    Console.WriteLine(admin.Salary);
-                }
+                Console.WriteLine(person.GetSalary());
             }
         }
 
